@@ -1,0 +1,5 @@
+Record=TopLevelDocument|FileName=Communication.SchDoc|SheetNumber=4
+Record=NoMainPathDocument|SourceDocument=Communication.SchDoc|FileName=main.SchDoc|SheetNumber=1
+Record=NoMainPathDocument|SourceDocument=Communication.SchDoc|FileName=MCU.SchDoc|SheetNumber=2
+Record=NoMainPathDocument|SourceDocument=Communication.SchDoc|FileName=Power.SchDoc|SheetNumber=3
+Record=NoMainPathDocument|SourceDocument=Communication.SchDoc|FileName=Sensors.SchDoc|SheetNumber=5
