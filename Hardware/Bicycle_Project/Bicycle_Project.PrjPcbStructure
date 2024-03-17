@@ -1,4 +1,5 @@
 Record=TopLevelDocument|FileName=main.SchDoc|SheetNumber=1
 Record=SheetSymbol|SourceDocument=main.SchDoc|Designator=Communication|SchDesignator=Communication|FileName=Communication.SchDoc|SheetNumber=4|SymbolType=Normal|RawFileName=Communication.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=main.SchDoc|Designator=IN_OUT|SchDesignator=IN_OUT|FileName=INPUTS_OUTPUTS.SchDoc|SheetNumber=5|SymbolType=Normal|RawFileName=INPUTS_OUTPUTS.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
 Record=SheetSymbol|SourceDocument=main.SchDoc|Designator=MCU|SchDesignator=MCU|FileName=MCU.SchDoc|SheetNumber=2|SymbolType=Normal|RawFileName=MCU.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
 Record=SheetSymbol|SourceDocument=main.SchDoc|Designator=Power|SchDesignator=Power|FileName=Power.SchDoc|SheetNumber=3|SymbolType=Normal|RawFileName=Power.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
