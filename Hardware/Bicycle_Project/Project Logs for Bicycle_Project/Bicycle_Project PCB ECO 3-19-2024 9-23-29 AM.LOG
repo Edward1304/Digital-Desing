@@ -1,0 +1,26 @@
+Removed Pin From Net: NetName=GND Pin=R308-1
+Removed Pin From Net: NetName=NetR306_1 Pin=R308-2
+Removed Pin From Net: NetName=GND Pin=R309-1
+Removed Pin From Net: NetName=NetR307_1 Pin=R309-2
+Removed Member From Class: ClassName=Communication Member=R308
+Removed Member From Class: ClassName=Communication Member=R309
+Change Component Comment : Designator=R306 Old Comment=0R 1/10W New Comment=3k3 1/10W
+Change Component Comment : Designator=R307 Old Comment=0R 1/10W New Comment=3k3 1/10W
+Change component parameters: Designator = "R306" ("R306"); Footprint = "0603_res"; UniqueID = "\UFSMFXVJ\GQCPHFES" ("\UFSMFXVJ\GQCPHFES")
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "LCSC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.lcsc.com/product-detail/Chip-Resistor-Surface-Mount_FOJAN-FRC0603J332-TS_C2907140.html"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "FOJAN"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer Part Number"; Value = "FRC0603J332 TS"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier 1"; Value = "LCSC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier Part Number 1"; Value = "C2907140"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Usage"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "3k3"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R307" ("R307"); Footprint = "0603_res"; UniqueID = "\UFSMFXVJ\FBHNFUJV" ("\UFSMFXVJ\FBHNFUJV")
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "LCSC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.lcsc.com/product-detail/Chip-Resistor-Surface-Mount_FOJAN-FRC0603J332-TS_C2907140.html"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "FOJAN"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer Part Number"; Value = "FRC0603J332 TS"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier 1"; Value = "LCSC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier Part Number 1"; Value = "C2907140"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Usage"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "3k3"; VariantName = "[No Variations]"
