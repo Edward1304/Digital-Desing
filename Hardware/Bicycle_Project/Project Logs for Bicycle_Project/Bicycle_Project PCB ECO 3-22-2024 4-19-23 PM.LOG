@@ -1,0 +1,4 @@
+Added Pin To Net: NetName=USB_D_N Pin=U300-4
+Added Pin To Net: NetName=USB_D_P Pin=U300-5
+Added Pin To Net: NetName=USB_D_N Pin=U301-4
+Added Pin To Net: NetName=USB_D_P Pin=U301-6
