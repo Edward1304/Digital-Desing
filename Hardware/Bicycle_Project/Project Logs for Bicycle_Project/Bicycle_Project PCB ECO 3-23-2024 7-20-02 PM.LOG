@@ -1,0 +1,51 @@
+Removed Member From Class: ClassName=MCU Member=C105
+Removed Member From Class: ClassName=Power Member=D203
+Removed Member From Class: ClassName=IN_OUT Member=Q406
+Removed Member From Class: ClassName=Communication Member=R310
+Removed Member From Class: ClassName=Communication Member=R311
+Removed Member From Class: ClassName=IN_OUT Member=R425
+Removed Member From Class: ClassName=IN_OUT Member=R426
+Change Component Designator: OldDesignator=C101 NewDesignator=C100
+Change Component Designator: OldDesignator=C102 NewDesignator=C101
+Change Component Designator: OldDesignator=C103 NewDesignator=C102
+Change Component Designator: OldDesignator=C104 NewDesignator=C103
+Change Component Designator: OldDesignator=C105 NewDesignator=C104
+Change Component Designator: OldDesignator=C300 NewDesignator=C303
+Change Component Designator: OldDesignator=C301 NewDesignator=C304
+Change Component Designator: OldDesignator=C302 NewDesignator=C300
+Change Component Designator: OldDesignator=C303 NewDesignator=C301
+Change Component Designator: OldDesignator=C304 NewDesignator=C302
+Change Component Designator: OldDesignator=D203 NewDesignator=D201
+Change Component Designator: OldDesignator=FB203 NewDesignator=FB200
+Change Component Designator: OldDesignator=FB300 NewDesignator=FB301
+Change Component Designator: OldDesignator=FB301 NewDesignator=FB300
+Change Component Designator: OldDesignator=Q406 NewDesignator=Q403
+Change Component Designator: OldDesignator=R200 NewDesignator=R201
+Change Component Designator: OldDesignator=R201 NewDesignator=R200
+Change Component Designator: OldDesignator=R304 NewDesignator=R306
+Change Component Designator: OldDesignator=R305 NewDesignator=R310
+Change Component Designator: OldDesignator=R306 NewDesignator=R309
+Change Component Designator: OldDesignator=R309 NewDesignator=R311
+Change Component Designator: OldDesignator=R310 NewDesignator=R303
+Change Component Designator: OldDesignator=R311 NewDesignator=R300
+Change Component Designator: OldDesignator=R409 NewDesignator=R411
+Change Component Designator: OldDesignator=R410 NewDesignator=R412
+Change Component Designator: OldDesignator=R411 NewDesignator=R413
+Change Component Designator: OldDesignator=R412 NewDesignator=R414
+Change Component Designator: OldDesignator=R413 NewDesignator=R415
+Change Component Designator: OldDesignator=R414 NewDesignator=R416
+Change Component Designator: OldDesignator=R424 NewDesignator=R426
+Change Component Designator: OldDesignator=R425 NewDesignator=R409
+Change Component Designator: OldDesignator=R426 NewDesignator=R410
+Change Net Name : Old Net Name=NetD203_2 New Net Name=NetD201_2
+Change Net Name : Old Net Name=NetQ406_1 New Net Name=NetQ403_1
+Change Net Name : Old Net Name=NetR301_1 New Net Name=NetR300_2
+Change Net Name : Old Net Name=NetR304_1 New Net Name=NetR306_1
+Change Net Name : Old Net Name=NetR306_1 New Net Name=NetR309_1
+Added Member To Class: ClassName=MCU Member=Component C100 (C105) 10uF 10V
+Added Member To Class: ClassName=Power Member=Component D201 (D202) 40V 1A
+Added Member To Class: ClassName=IN_OUT Member=Component Q403 (Q404) N CH
+Added Member To Class: ClassName=Communication Member=Component R300 (R302) 100R 1/10W
+Added Member To Class: ClassName=Communication Member=Component R303 (R305) 3k3 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R415 (R417) 10k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R416 (R418) 10k 1/10W
