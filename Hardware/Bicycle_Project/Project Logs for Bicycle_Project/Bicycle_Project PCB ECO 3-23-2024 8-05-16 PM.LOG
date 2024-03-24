@@ -1,0 +1,98 @@
+Added Pin To Net: NetName=GND Pin=C100-2
+Added Pin To Net: NetName=GND Pin=Q403-2
+Added Member To Class: ClassName=MCU Member=Component C100 22uF 6V3
+Added Member To Class: ClassName=MCU Member=Component C101 0.1uF 50V
+Added Member To Class: ClassName=MCU Member=Component C102 0.1uF 50V
+Added Member To Class: ClassName=MCU Member=Component C103 0.1uF 50V
+Added Member To Class: ClassName=MCU Member=Component C104 0.1uF 50V
+Added Member To Class: ClassName=MCU Member=Component C105 10uF 10V
+Added Member To Class: ClassName=Power Member=Component C210 (C200) 10uF 10V
+Added Member To Class: ClassName=Power Member=Component C211 (C201) 22uF 6V3
+Added Member To Class: ClassName=Communication Member=Component C300 10uF 10V
+Added Member To Class: ClassName=Communication Member=Component C301 0.1uF 50V
+Added Member To Class: ClassName=Communication Member=Component C302 0.1uF 50V
+Added Member To Class: ClassName=Communication Member=Component C303 10uF 10V
+Added Member To Class: ClassName=Communication Member=Component C304 0.1uF 50V
+Added Member To Class: ClassName=IN_OUT Member=Component C400 1uF 50V
+Added Member To Class: ClassName=IN_OUT Member=Component C401 1uF 50V
+Added Member To Class: ClassName=IN_OUT Member=Component C402 1uF 50V
+Added Member To Class: ClassName=Power Member=Component D200 40V 1A
+Added Member To Class: ClassName=Power Member=Component D201 2V
+Added Member To Class: ClassName=Power Member=Component D202 40V 1A
+Added Member To Class: ClassName=Power Member=Component D203 40V 1A
+Added Member To Class: ClassName=Power Member=Component D204 2V
+Added Member To Class: ClassName=Communication Member=Component D300 2V
+Added Member To Class: ClassName=Communication Member=Component D301 2.9V
+Added Member To Class: ClassName=IN_OUT Member=Component D400 RGB
+Added Member To Class: ClassName=IN_OUT Member=Component D401 RGB
+Added Member To Class: ClassName=MCU Member=Component FB100 60OHM 2A
+Added Member To Class: ClassName=Power Member=Component FB200 60OHM 2A
+Added Member To Class: ClassName=Communication Member=Component FB300 60OHM 2A
+Added Member To Class: ClassName=Communication Member=Component FB301 60OHM 2A
+Added Member To Class: ClassName=MCU Member=Component J100 JTAG
+Added Member To Class: ClassName=Power Member=Component J200 USB Mini B
+Added Member To Class: ClassName=Power Member=Component J201 VIN_5V
+Added Member To Class: ClassName=Power Member=Component J202 PWR JACK 2.1mm
+Added Member To Class: ClassName=IN_OUT Member=Component J400 LOAD
+Added Member To Class: ClassName=IN_OUT Member=Component J401 SPEED
+Added Member To Class: ClassName=IN_OUT Member=Component J402 TEMP
+Added Member To Class: ClassName=IN_OUT Member=Component Q400 N CH
+Added Member To Class: ClassName=IN_OUT Member=Component Q401 N CH
+Added Member To Class: ClassName=IN_OUT Member=Component Q402 N CH
+Added Member To Class: ClassName=IN_OUT Member=Component Q403 N CH
+Added Member To Class: ClassName=IN_OUT Member=Component Q404 N CH
+Added Member To Class: ClassName=IN_OUT Member=Component Q405 N CH
+Added Member To Class: ClassName=IN_OUT Member=Component Q406 N CH
+Added Member To Class: ClassName=MCU Member=Component R100 10k 1/10W
+Added Member To Class: ClassName=MCU Member=Component R101 5k1 1/10W
+Added Member To Class: ClassName=MCU Member=Component R102 10k 1/10W
+Added Member To Class: ClassName=Power Member=Component R200 220R 1/10W
+Added Member To Class: ClassName=Power Member=Component R201 100R 1/10W
+Added Member To Class: ClassName=Communication Member=Component R300 5k1 1/10W
+Added Member To Class: ClassName=Communication Member=Component R301 10k 1/10W
+Added Member To Class: ClassName=Communication Member=Component R302 100R 1/10W
+Added Member To Class: ClassName=Communication Member=Component R303 33R 1/10W
+Added Member To Class: ClassName=Communication Member=Component R304 10k 1/10W
+Added Member To Class: ClassName=Communication Member=Component R305 3k3 1/10W
+Added Member To Class: ClassName=Communication Member=Component R306 10k 1/10W
+Added Member To Class: ClassName=Communication Member=Component R307 10k 1/10W
+Added Member To Class: ClassName=Communication Member=Component R308 10k 1/10W
+Added Member To Class: ClassName=Communication Member=Component R309 10k 1/10W
+Added Member To Class: ClassName=Communication Member=Component R310 10k 1/10W
+Added Member To Class: ClassName=Communication Member=Component R311 10k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R400 52R3 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R401 24R 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R402 30 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R403 1k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R404 1k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R405 1k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R406 10k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R407 10k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R408 10k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R409 1k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R410 10k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R411 52R3 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R412 24R 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R413 30 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R414 1k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R415 1k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R416 1k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R417 10k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R418 10k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R419 10k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R420 1k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R421 1k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R422 1k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R423 10k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R424 10k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R425 10k 1/10W
+Added Member To Class: ClassName=IN_OUT Member=Component R426 4k7 1/10W
+Added Member To Class: ClassName=MCU Member=Component SW100 RST_MCU
+Added Member To Class: ClassName=IN_OUT Member=Component SW400 Sw
+Added Member To Class: ClassName=IN_OUT Member=Component SW401 Sw
+Added Member To Class: ClassName=IN_OUT Member=Component SW402 Sw
+Added Member To Class: ClassName=MCU Member=Component U100 STM32F030C8T6TR
+Added Member To Class: ClassName=Power Member=Component U200 AMS1117-3.3
+Added Member To Class: ClassName=Communication Member=Component U300 CP2102N-A02-GQFN20R
+Added Member To Class: ClassName=Communication Member=Component U301 USBLC6-2SC6
+Added Member To Class: ClassName=Communication Member=Component U302 ZD25WQ16BTIGR
