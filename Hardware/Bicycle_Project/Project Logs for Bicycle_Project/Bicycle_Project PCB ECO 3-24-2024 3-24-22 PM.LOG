@@ -1,0 +1,15 @@
+Added Component: Designator=D401(RGB_NS_3.5X3.7)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "LCSC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.lcsc.com/product-detail/Light-Emitting-Diodes-LED_Foshan-NationStar-Optoelectronics-RS-3535MWAM_C842778.html"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Foshan NationStar Optoelectronics"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "RS-3535MWAM"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "LCSC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "C842778"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Usage"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetD401_1 Pin=D401-1
+Added Pin To Net: NetName=NetD401_2 Pin=D401-2
+Added Pin To Net: NetName=NetD401_3 Pin=D401-3
+Added Pin To Net: NetName=3V3 Pin=D401-4
+Added Pin To Net: NetName=3V3 Pin=D401-5
+Added Pin To Net: NetName=3V3 Pin=D401-6
+Added Member To Class: ClassName=IN_OUT Member=Component D401 RGB
