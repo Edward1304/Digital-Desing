@@ -1,0 +1,2 @@
+Remove Pin=J203-4 From Net=PA1
+Add Pin To Net: Pin=J203-4 Old Net=PA1 New Net=PA0

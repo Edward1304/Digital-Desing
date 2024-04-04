@@ -1,7 +1,7 @@
 Protel Design System Design Rule Check
-PCB File : E:\GUSTAVO\UNAL\Semestre_2024-1\Diseño_Digital\Digital-Desing\Hardware\Bicycle_Project\Bicycle_Project.PcbDoc
-Date     : 3/26/2024
-Time     : 12:59:27 AM
+PCB File : C:\Users\Usuario\Desktop\Developments\2024-1S\Digital-Desing\Hardware\Bicycle_Project\Bicycle_Project.PcbDoc
+Date     : 4/3/2024
+Time     : 11:41:57 AM
 
 Processing Rule : Clearance Constraint (Gap=7mil) (All),(All)
 Rule Violations :0
@@ -69,8 +69,6 @@ Processing Rule : Un-Routed Net Constraint ( (All) )
    Violation between Un-Routed Net Constraint: Net GND Between Pad Q406-2(1576.772mil,2391.732mil) on Top Layer And Pad R102-1(1905.516mil,2364.405mil) on Top Layer 
    Violation between Un-Routed Net Constraint: Net GND Between Pad R419-1(1508.394mil,2391.732mil) on Top Layer And Pad Q406-2(1576.772mil,2391.732mil) on Top Layer 
    Violation between Un-Routed Net Constraint: Net GND Between Pad U302-4(431.142mil,2119.803mil) on Top Layer And Pad R100-2(681.098mil,2047.244mil) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net POWER_INPUT_MEASURE Between Pad R102-2(1842.516mil,2364.405mil) on Top Layer And Pad R101-1(1842.516mil,2427.405mil) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net POWER_INPUT_MEASURE Between Pad U100-16(1188.858mil,2027.835mil) on Top Layer And Pad R102-2(1842.516mil,2364.405mil) on Top Layer 
    Violation between Un-Routed Net Constraint: Net GND Between Pad R200-1(862.795mil,583.152mil) on Top Layer And Pad U200-1(865.748mil,857.205mil) on Top Layer 
    Violation between Un-Routed Net Constraint: Net GND Between Pad U300-12(2058.976mil,821.024mil) on Top Layer And Pad R305-1(2102.291mil,882.878mil) on Top Layer 
    Violation between Un-Routed Net Constraint: Net GND Between Pad R419-1(1508.394mil,2391.732mil) on Top Layer And Pad R410-1(1508.394mil,2537.402mil) on Top Layer 
@@ -80,7 +78,7 @@ Processing Rule : Un-Routed Net Constraint ( (All) )
    Violation between Un-Routed Net Constraint: Net GND Between Pad U100-47(854.213mil,1988.465mil) on Top Layer And Pad U100-8(1051.063mil,1909.725mil) on Top Layer 
    Violation between Un-Routed Net Constraint: Net GND Between Via (2055.118mil,759.842mil) from Top Layer to Bottom Layer And Pad U300-12(2058.976mil,821.024mil) on Top Layer 
    Violation between Un-Routed Net Constraint: Net GND Between Via (2003.937mil,759.842mil) from Top Layer to Bottom Layer And Pad U300-3(2019.606mil,698.976mil) on Top Layer 
-Rule Violations :67
+Rule Violations :65
 
 Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
 Rule Violations :0
@@ -128,6 +126,6 @@ Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (
 Rule Violations :0
 
 
-Violations Detected : 67
+Violations Detected : 65
 Waived Violations : 0
 Time Elapsed        : 00:00:02

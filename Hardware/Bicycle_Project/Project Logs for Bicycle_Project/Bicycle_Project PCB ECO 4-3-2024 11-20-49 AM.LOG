@@ -1,0 +1,16 @@
+Change Net Name : Old Net Name=A0 New Net Name=PC15
+Change Net Name : Old Net Name=A1 New Net Name=PF0
+Change Net Name : Old Net Name=D0 New Net Name=PC13
+Change Net Name : Old Net Name=D1 New Net Name=PC14
+Change Net Name : Old Net Name=I/O New Net Name=PF1
+Change Net Name : Old Net Name=PWM New Net Name=PA5
+Change Net Name : Old Net Name=RX_3 New Net Name=PA11
+Change Net Name : Old Net Name=SCL_2 New Net Name=PF6
+Change Net Name : Old Net Name=SDA_2 New Net Name=PF7
+Change Net Name : Old Net Name=TX_3 New Net Name=PA10
+Added Pin To Net: NetName=PA0 Pin=J203-4
+Added Pin To Net: NetName=PA0 Pin=U100-10
+Added Net: Name=PA0
+Added Pin To Net: NetName=PA1 Pin=J203-5
+Added Pin To Net: NetName=PA1 Pin=U100-11
+Added Net: Name=PA1
