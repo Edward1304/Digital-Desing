@@ -1,7 +1,7 @@
 Protel Design System Design Rule Check
 PCB File : E:\GUSTAVO\UNAL\Semestre_2024-1\Diseño_Digital\Digital-Desing\Hardware\Bicycle_Project\Bicycle_Project.PcbDoc
-Date     : 4/3/2024
-Time     : 11:03:35 PM
+Date     : 4/4/2024
+Time     : 12:32:28 PM
 
 Processing Rule : Clearance Constraint (Gap=7mil) (All),(All)
 Rule Violations :0
@@ -63,4 +63,4 @@ Rule Violations :0
 
 Violations Detected : 0
 Waived Violations : 0
-Time Elapsed        : 00:00:02
+Time Elapsed        : 00:00:01
