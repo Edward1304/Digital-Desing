@@ -1,7 +1,7 @@
 Protel Design System Design Rule Check
 PCB File : E:\GUSTAVO\UNAL\Semestre_2024-1\Diseño_Digital\Digital-Desing\Hardware\Bicycle_Project\Bicycle_Project.PcbDoc
-Date     : 4/4/2024
-Time     : 12:32:28 PM
+Date     : 4/5/2024
+Time     : 8:42:49 PM
 
 Processing Rule : Clearance Constraint (Gap=7mil) (All),(All)
 Rule Violations :0
@@ -60,7 +60,17 @@ Rule Violations :0
 Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
 Rule Violations :0
 
+Waived Violations Of Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+   Waived Violation between Short-Circuit Constraint: Between Pad U200-4(956.299mil,1085.551mil) on Top Layer And Via (1003.937mil,1055.118mil) from Top Layer to Bottom Layer Location : [X = 2003.937mil][Y = 2055.118mil]Waived by Pisso Ramirez Gustavo Andres at 4/5/2024 8:42:24 PMPad haven't route because the pin unconnected
+   Waived Violation between Short-Circuit Constraint: Between Pad U200-4(956.299mil,1085.551mil) on Top Layer And Via (909.449mil,1114.173mil) from Top Layer to Bottom Layer Location : [X = 1909.449mil][Y = 2114.173mil]Waived by Pisso Ramirez Gustavo Andres at 4/5/2024 8:42:29 PMPad haven't route because the pin unconnected
+Waived Violations :2
+
+Waived Violations Of Rule : Un-Routed Net Constraint ( (All) )
+   Waived Violation between Un-Routed Net Constraint: Via (1003.937mil,1055.118mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.Waived by Pisso Ramirez Gustavo Andres at 4/5/2024 8:42:27 PMPad haven't route because the pin unconnected
+   Waived Violation between Un-Routed Net Constraint: Via (909.449mil,1114.173mil) from Top Layer to Bottom Layer Dead Copper - Net Not Assigned.Waived by Pisso Ramirez Gustavo Andres at 4/5/2024 8:42:46 PMPad haven't route because the pin unconnected
+Waived Violations :2
+
 
 Violations Detected : 0
-Waived Violations : 0
+Waived Violations : 4
 Time Elapsed        : 00:00:01
