@@ -1,0 +1,14 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [Bicycle_Project.PrjPcb]
+   Generated File[Bicycle_Project-RoundHoles.TXT]
+   Generated File[Bicycle_Project-SlotHoles.TXT]
+   Generated File[Bicycle_Project.DRL]
+   Generated File[Bicycle_Project.LDP]
+   Generated File[Bicycle_Project.DRR]
+
+
+Files Generated   : 5
+Documents Printed : 0
+
+Finished Output Generation At 10:31:36 PM On 4/14/2024
