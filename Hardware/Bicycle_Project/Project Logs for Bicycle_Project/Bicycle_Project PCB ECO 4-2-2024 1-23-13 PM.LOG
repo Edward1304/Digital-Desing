@@ -1,3 +1,0 @@
-Removed Pin From Net: NetName=PA0 Pin=J203-5
-Added Pin To Net: NetName=ADC0 Pin=J203-5
-Added Net: Name=ADC0

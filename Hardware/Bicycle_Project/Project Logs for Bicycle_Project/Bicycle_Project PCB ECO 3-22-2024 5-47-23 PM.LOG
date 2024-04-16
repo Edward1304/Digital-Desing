@@ -1,6 +1,0 @@
-Removed Pin From Net: NetName=D_P Pin=U301-4
-Removed Pin From Net: NetName=D_N Pin=U301-6
-Added Pin To Net: NetName=D_N Pin=U301-4
-Added Pin To Net: NetName=D_P Pin=U301-6
-Change Differential Pair Positive Net Name : Old Net Name=D_P New Net Name=D_P
-Change Differential Pair Negative Net Name : Old Net Name=D_N New Net Name=D_N
