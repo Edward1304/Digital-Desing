@@ -1,0 +1,28 @@
+Removed Pin From Net: NetName=3V3 Pin=J203-1
+Removed Pin From Net: NetName=3V3 Pin=J203-2
+Removed Pin From Net: NetName=GND Pin=J203-3
+Removed Pin From Net: NetName=PA1 Pin=J203-4
+Removed Pin From Net: NetName=PA0 Pin=J203-5
+Removed Pin From Net: NetName=PF1 Pin=J203-6
+Removed Pin From Net: NetName=PF0 Pin=J203-7
+Removed Pin From Net: NetName=PC15 Pin=J203-8
+Removed Pin From Net: NetName=PC14 Pin=J203-9
+Change Footprint: Footprint Not Found CON_2x12_th_2.54MM
+Change Component Comment : Designator=J203 Old Comment=TD-112-T-A New Comment=10129381-924001BLF
+Change component parameters: Designator = "J203" ("J203"); Footprint = "CON_12X2_TH_2.54mm"; UniqueID = "\TXOGVPKJ\TNKEXDNH" ("\TXOGVPKJ\TNKEXDNH")
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Amphenol ICC (FCI)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer Part Number"; Value = "10129381-924001BLF"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier Part Number 1"; Value = "10129381-924001BLF-ND"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Add Pin To Net: Unknown Pin: Pin J203-01
+Add Pin To Net: Unknown Pin: Pin J203-02
+Add Pin To Net: Unknown Pin: Pin J203-03
+Add Pin To Net: Unknown Pin: Pin J203-04
+Add Pin To Net: Unknown Pin: Pin J203-05
+Add Pin To Net: Unknown Pin: Pin J203-06
+Add Pin To Net: Unknown Pin: Pin J203-07
+Add Pin To Net: Unknown Pin: Pin J203-08
+Add Pin To Net: Unknown Pin: Pin J203-09

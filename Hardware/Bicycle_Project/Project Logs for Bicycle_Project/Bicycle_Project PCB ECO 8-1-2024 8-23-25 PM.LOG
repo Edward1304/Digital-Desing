@@ -1,0 +1,35 @@
+Add Component: Footprint Not Found CON_2x12_th_2.54MM
+Added Component: Designator=J204(CON_3X1_TH_2.54mm)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/en/products/detail/samtec-inc/TS-103-T-A/1105491?_gl=1*1t1dcus*_up*MQ..&gclid=Cj0KCQjw-_mvBhDwARIsAA-Q0Q5KBzpfdY0H_Ffe6QJIFDLMjPjB3ZOAgeyRFeaxKSID7sFc7WuggU8aAnqfEALw_wcB"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Samtec Inc."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "TS-103-T-A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "DigiKey"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "SAM1112-03-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Usage"; Value = ""; VariantName = "[No Variations]"
+Add Pin To Net: Unknown Pin: Pin J203-01
+Add Pin To Net: Unknown Pin: Pin J203-02
+Add Pin To Net: Unknown Pin: Pin J203-03
+Add Pin To Net: Unknown Pin: Pin J203-04
+Add Pin To Net: Unknown Pin: Pin J203-05
+Add Pin To Net: Unknown Pin: Pin J203-06
+Add Pin To Net: Unknown Pin: Pin J203-07
+Add Pin To Net: Unknown Pin: Pin J203-08
+Add Pin To Net: Unknown Pin: Pin J203-09
+Add Pin To Net: Unknown Pin: Pin J203-10
+Add Pin To Net: Unknown Pin: Pin J203-11
+Add Pin To Net: Unknown Pin: Pin J203-12
+Add Pin To Net: Unknown Pin: Pin J203-13
+Add Pin To Net: Unknown Pin: Pin J203-14
+Add Pin To Net: Unknown Pin: Pin J203-15
+Add Pin To Net: Unknown Pin: Pin J203-16
+Add Pin To Net: Unknown Pin: Pin J203-17
+Add Pin To Net: Unknown Pin: Pin J203-18
+Add Pin To Net: Unknown Pin: Pin J203-19
+Add Pin To Net: Unknown Pin: Pin J203-20
+Add Pin To Net: Unknown Pin: Pin J203-21
+Add Pin To Net: Unknown Pin: Pin J203-22
+Add Pin To Net: Unknown Pin: Pin J203-23
+Add Pin To Net: Unknown Pin: Pin J203-24
+Add Class Member: Failed to add class member : Component J203 10129381-924001BLF
+Added Member To Class: ClassName=Power Member=Component J204 TEMP
