@@ -1,0 +1,13 @@
+Added Component: Designator=J401(CON_4X1_TH_2.54MM)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/en/products/detail/amphenol-cs-fci/10129378-904001BLF/7915932?s=N4IgTCBcDaIIwAY5gJwGYDsAOAtChALAkgEIAyAYiALoC%2BQA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Amphenol ICC (FCI)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "10129378-904001BLF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "10129378-904001BLF-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetFB403_2 Pin=J401-1
+Added Pin To Net: NetName=GND Pin=J401-2
+Added Pin To Net: NetName=SPEED_SENSOR_DIGITAL_PIN Pin=J401-3
+Added Pin To Net: NetName=SPEED_SENSOR_ANALOG_PIN Pin=J401-4
+Added Member To Class: ClassName=IN_OUT Member=Component J401 SPEED
