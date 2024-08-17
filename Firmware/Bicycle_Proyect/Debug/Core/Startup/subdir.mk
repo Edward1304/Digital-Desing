@@ -1,6 +1,10 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
+<<<<<<< HEAD
 # Toolchain: GNU Tools for STM32 (12.3.rel1)
+=======
+# Toolchain: GNU Tools for STM32 (11.3.rel1)
+>>>>>>> 7d48e54ab4e32dd8268058914e4adbbe20e84c00
 ################################################################################
 
 # Add inputs and outputs from these tool invocations to the build variables 

@@ -83,6 +83,8 @@ void Error_Handler(void);
 #define PB_B_GPIO_Port GPIOB
 #define PB_A_Pin GPIO_PIN_14
 #define PB_A_GPIO_Port GPIOB
+#define SETTING_LED_Pin GPIO_PIN_8
+#define SETTING_LED_GPIO_Port GPIOA
 #define FLASH_CS_Pin GPIO_PIN_15
 #define FLASH_CS_GPIO_Port GPIOA
 #define FLASH_SCK_Pin GPIO_PIN_3

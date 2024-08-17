@@ -1,10 +1,14 @@
 "./Core/Src/main.o"
 "./Core/Src/stm32f0xx_hal_msp.o"
 "./Core/Src/stm32f0xx_it.o"
+<<<<<<< HEAD
 "./Core/Src/syscalls.o"
 "./Core/Src/sysmem.o"
 "./Core/Src/system_stm32f0xx.o"
 "./Core/Startup/startup_stm32f030c8tx.o"
+=======
+"./Core/Src/system_stm32f0xx.o"
+>>>>>>> 7d48e54ab4e32dd8268058914e4adbbe20e84c00
 "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.o"
 "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc.o"
 "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc_ex.o"

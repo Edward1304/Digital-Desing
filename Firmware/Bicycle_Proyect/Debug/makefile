@@ -10,7 +10,10 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include Drivers/STM32F0xx_HAL_Driver/Src/subdir.mk
+<<<<<<< HEAD
 -include Core/Startup/subdir.mk
+=======
+>>>>>>> 7d48e54ab4e32dd8268058914e4adbbe20e84c00
 -include Core/Src/subdir.mk
 -include objects.mk
 
@@ -60,8 +63,13 @@ all: main-build
 main-build: Bicycle_Proyect.elf secondary-outputs
 
 # Tool invocations
+<<<<<<< HEAD
 Bicycle_Proyect.elf Bicycle_Proyect.map: $(OBJS) $(USER_OBJS) C:\Users\Usuario\Desktop\Developments\unal\2024-1S\Digital-Desing\Firmware\Bicycle_Proyect\STM32F030C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	arm-none-eabi-gcc -o "Bicycle_Proyect.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Users\Usuario\Desktop\Developments\unal\2024-1S\Digital-Desing\Firmware\Bicycle_Proyect\STM32F030C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bicycle_Proyect.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+=======
+Bicycle_Proyect.elf Bicycle_Proyect.map: $(OBJS) $(USER_OBJS) E:\GUSTAVO\UNAL\Semestre_2024-1\Diseño_Digital\Digital-Desing\Firmware\Bicycle_Proyect\STM32F030C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Bicycle_Proyect.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"E:\GUSTAVO\UNAL\Semestre_2024-1\Diseño_Digital\Digital-Desing\Firmware\Bicycle_Proyect\STM32F030C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bicycle_Proyect.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+>>>>>>> 7d48e54ab4e32dd8268058914e4adbbe20e84c00
 	@echo 'Finished building target: $@'
 	@echo ' '
 
