@@ -1,0 +1,10 @@
+#ifndef __STATE_MACHINE__
+#define __STATE_MACHINE__
+
+typedef enum{
+	s0,
+	s1,
+	s2,
+}state_machine_enum;
+
+#endif

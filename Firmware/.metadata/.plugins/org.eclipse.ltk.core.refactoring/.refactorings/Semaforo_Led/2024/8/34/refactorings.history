@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Semaforo_Led/Core/Src/state_machine&apos; to &apos;state_machine.c&apos;" description="Rename resource &apos;state_machine&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Src/state_machine" name="state_machine.c" stamp="1724470139587" updateReferences="true"/>
+</session>

@@ -1,0 +1,4 @@
+../Core/Src/state_machine.c:10:6:initialize_state_machine	1
+../Core/Src/state_machine.c:14:6:check_state_machine	3
+../Core/Src/state_machine.c:27:6:s0_state_function	4
+../Core/Src/state_machine.c:55:6:s1_state_function	4
