@@ -1,0 +1,83 @@
+#include "state_machine.h"
+
+uint8_t counter_switch=0;
+state_machine_enum state_machine;
+extern flag_enum button_flag;
+extern flag_enum timer_switch_flag;
+extern flag_enum timer_indicator_flag;
+extern TIM_HandleTypeDef htim3;
+
+void initialize_state_machine(void){
+	state_machine = s_carro;
+}
+
+void check_state_machine(void){
+	switch(state_machine){
+		case s_carro:
+			s0_state_function();
+			break;
+		case s_peaton:
+			s1_state_function();
+			break;
+		default:
+			break;
+	}
+}
+
+void s_carro_state_function(void){
+	if(timer_switch_flag==FLAG_SET){
+		timer_switch_flag=FLAG_RELEASED;
+		HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+		counter_switch++;
+		if(counter_switch>=5){
+			state_machine=s_peaton;
+			counter_switch=0;
+
+			htim3.Init.Period = 5000-1;
+			if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
+			  {
+			    Error_Handler();
+			  }
+		}
+	}else{
+
+	}
+//	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+//	HAL_Delay(1000);
+//	if(button_flag == FLAG_SET){
+//		button_flag = FLAG_RELEASED;
+//
+//		HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+//}
+
+}
+
+void s_peaton_function(void){
+	if(timer_switch_flag==FLAG_SET){
+			timer_switch_flag=FLAG_RELEASED;
+			HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+			counter_switch++;
+			if(counter_switch>=6){
+				state_machine=s_carro;
+				counter_switch=0;
+
+				htim3.Init.Period = 20000-1;
+				if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
+				{
+				  Error_Handler();
+				}
+			}
+		}else{
+
+		}
+//	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+//	HAL_Delay(2000);
+//	if(button_flag == FLAG_SET){
+//		button_flag = FLAG_RELEASED;
+//		state_machine=s2;
+//			HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+//
+//		}
+}
+
+

@@ -1,0 +1,10 @@
+08:38:57 **** Build of configuration Debug for project Ring_buffer ****
+make -j8 all 
+arm-none-eabi-size  Ring_buffer.elf 
+   text	   data	    bss	    dec	    hex	filename
+  17100	     12	   1876	  18988	   4a2c	Ring_buffer.elf
+Finished building: default.size.stdout
+ 
+
+08:39:01 Build Finished. 0 errors, 0 warnings. (took 4s.435ms)
+

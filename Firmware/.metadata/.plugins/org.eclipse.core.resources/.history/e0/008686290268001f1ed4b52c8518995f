@@ -1,0 +1,52 @@
+#include "state_machine.h"
+
+uint8_t counter_switch=0;
+state_machine_enum state_machine;
+extern flag_enum button_flag;
+extern flag_enum timer_switch_flag;
+extern flag_enum timer_indicator_flag;
+extern TIM_HandleTypeDef htim3;
+
+void initialize_state_machine(void){
+	state_machine = cruce_carros;
+}
+
+void check_state_machine(void){
+	switch(state_machine){
+		case cruce_carros:
+			cruce_carro_state_function();
+			break;
+		case cruce_peatones:
+			cruce_peaton_state_function();
+			break;
+		default:
+			break;
+	}
+}
+
+void cruce_carro_state_function(void){
+
+
+//	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+//	HAL_Delay(1000);
+//	if(button_flag == FLAG_SET){
+//		button_flag = FLAG_RELEASED;
+//
+//		HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+//}
+
+}
+
+void cruce_peaton_state_function(void){
+
+//	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+//	HAL_Delay(2000);
+//	if(button_flag == FLAG_SET){
+//		button_flag = FLAG_RELEASED;
+//		state_machine=s2;
+//			HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+//
+//		}
+}
+
+

@@ -9,6 +9,8 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="E:\GUSTAVO\UNAL\Semestre_2024-1\Monitoria_estructuras_computacionales\4100901-tesla-turn-hazard-signal"/>
+			<item value="E:\GUSTAVO\UNAL\Semestre_2024-1\Diseno_Digital\DigitalDesing\Firmware\Bicycle_Proyect"/>
 			<item value="E:\GUSTAVO\UNAL\Semestre_2024-1\Diseno_Digital\DigitalDesing\Firmware\Class_examples"/>
 			<item value="E:\GUSTAVO\UNAL\Semestre_2024-1\Diseno_Digital\DigitalDesing\Firmware\Prueba"/>
 			<item value="E:\GUSTAVO\UNAL\Semestre_2024-1\Diseño_Digital\DigitalDesing\Firmware\Prueba"/>
