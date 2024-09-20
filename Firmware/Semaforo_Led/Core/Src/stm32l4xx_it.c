@@ -58,6 +58,7 @@ extern uint8_t time_250ms_for_seconds;
 
 /* External variables --------------------------------------------------------*/
 extern TIM_HandleTypeDef htim3;
+extern UART_HandleTypeDef huart2;
 /* USER CODE BEGIN EV */
 extern flag_enum timer_switch_flag;
 extern flag_enum timer_indicator_flag;
@@ -218,6 +219,20 @@ void TIM3_IRQHandler(void)
 //	  time_250ms = 0;
 //  }
   /* USER CODE END TIM3_IRQn 1 */
+}
+
+/**
+  * @brief This function handles USART2 global interrupt.
+  */
+void USART2_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART2_IRQn 0 */
+
+  /* USER CODE END USART2_IRQn 0 */
+  HAL_UART_IRQHandler(&huart2);
+  /* USER CODE BEGIN USART2_IRQn 1 */
+
+  /* USER CODE END USART2_IRQn 1 */
 }
 
 /**

@@ -1,0 +1,19 @@
+#ifndef INC_DS18B20_
+#define INC_DS18B20_
+
+#include "main.h"
+
+//#define DS18B20_GPIO_Port	GPIOA
+//#define DS18B20_PIN			GPIO_PIN_2
+
+static void Set_Pin_Input ( GPIO_TypeDef* GPIOx, uint16_t GPIO_PIN );
+static void Set_Pin_Output ( GPIO_TypeDef* GPIOx, uint16_t GPIO_PIN );
+static uint8_t DS18B20_Start ( void );
+static void DS18B20_Write ( uint8_t data );
+static uint8_t DS18B20_Read (void);
+static void delay ( uint16_t us );
+static float convert_temperature(uint8_t byte_1, uint8_t byte_2);
+
+float Get_temperature( void );
+
+#endif /* INC_DS18B20_ */

@@ -32,6 +32,8 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "state_machine.h"
+#include "string.h"
+#include "stdio.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -53,7 +55,9 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-
+#define TX_BUFFER		255
+#define RX_BUFFER		100
+#define LENGTH_COMMAND	1
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

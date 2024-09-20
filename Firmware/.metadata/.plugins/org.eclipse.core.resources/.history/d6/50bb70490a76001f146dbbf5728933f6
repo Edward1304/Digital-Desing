@@ -1,0 +1,15 @@
+#ifndef INC_DS18B20_H_
+#define INC_DS18B20_H_
+
+#include "stm32f0xx_hal.h"
+
+#define DS18B20_GPIO_Port
+#define DS18B20_PIN
+
+void Set_Pin_Input ( GPIO_TypeDef GPIOx, uint16_t GPIO_PIN );
+void Set_Pin_Output ( GPIO_TypeDef GPIOx, uint16_t GPIO_PIN );
+void DS18B20_Start ( void );
+void delay ( uint16_t us );
+
+
+#endif /* INC_DS18B20_H_ */

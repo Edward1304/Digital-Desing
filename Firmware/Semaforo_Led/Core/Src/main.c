@@ -48,9 +48,11 @@ UART_HandleTypeDef huart2;
 extern state_machine_enum state_machine;
 flag_enum button_flag;
 flag_enum timer_switch_flag;
-flag_enum timer_indicator_flag;
-flag_enum carros_flag;
-flag_enum pedestrians_flag;
+flag_enum uart2_received_flag;
+uint8_t byte_counter;
+
+char string_to_send[TX_BUFFER];
+char string_to_receive[RX_BUFFER];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -69,6 +71,19 @@ static void MX_TIM3_Init(void);
 	 if(GPIO_Pin == Button_Pin)
 		 button_flag = FLAG_SET;
 }
+
+ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+ {
+   if( huart == &huart2 ){
+	   if(string_to_receive[byte_counter] == '$'){
+		   uart2_received_flag = FLAG_SET;
+	   }else{
+		   byte_counter++;
+		   HAL_UART_Receive_IT(&huart2, (uint8_t *)&string_to_receive[byte_counter], LENGTH_COMMAND);
+	   }
+   }
+ }
+
 /* USER CODE END 0 */
 
 /**
@@ -103,19 +118,47 @@ int main(void)
   MX_USART2_UART_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-  button_flag=FLAG_RELEASED;
-  timer_switch_flag=FLAG_RELEASED;
+  button_flag = FLAG_RELEASED;
+  timer_switch_flag = FLAG_RELEASED;
+  uart2_received_flag = FLAG_RELEASED;
+  byte_counter = 0;
   initialize_state_machine();
   HAL_TIM_Base_Start_IT(&htim3);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  uint8_t length_to_send;
+  //HAL_StatusTypeDef uart_hal_status;
+  length_to_send = sprintf(&string_to_send[0],"HOLA MUNDO\r\n");
+  HAL_UART_Transmit(&huart2,(const uint8_t *)&string_to_send[0], length_to_send, 100);
+  HAL_UART_Receive_IT(&huart2, (uint8_t *)&string_to_receive[byte_counter], LENGTH_COMMAND);
+  string_to_receive[LENGTH_COMMAND] = 0x00;
+
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+	  if(uart2_received_flag == FLAG_SET){
+		  uart2_received_flag = FLAG_RELEASED;
+		  length_to_send = sprintf(&string_to_send[0],"Message received: %s \r\n", (char *)&string_to_receive[0]);
+		  HAL_UART_Transmit(&huart2,(const uint8_t *)&string_to_send[0], length_to_send, 100);
+		  byte_counter = 0;
+		  HAL_UART_Receive_IT(&huart2, (uint8_t *)&string_to_receive[0], LENGTH_COMMAND);
+
+	  }
+
+	  /*uart_hal_status = HAL_UART_Receive(&huart2, (uint8_t *)&string_to_receive[0], 4, 500);
+
+	  if(uart_hal_status == HAL_OK){
+		  length_to_send = sprintf(&string_to_send[0],"Message received: %s \r\n", (char *)&string_to_receive[0]);
+		  HAL_UART_Transmit(&huart2,(const uint8_t *)&string_to_send[0], length_to_send, 100);
+	  }else if(uart_hal_status == HAL_TIMEOUT){
+		  length_to_send = sprintf(&string_to_send[0],"Message timeout \r\n");
+		  HAL_UART_Transmit(&huart2,(const uint8_t *)&string_to_send[0], length_to_send, 100);
+	  }*/
 
 	  check_state_machine();
 

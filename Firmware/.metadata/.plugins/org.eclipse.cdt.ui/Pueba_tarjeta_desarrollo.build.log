@@ -1,0 +1,17 @@
+14:18:56 **** Incremental Build of configuration Debug for project Pueba_tarjeta_desarrollo ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/DS18B20.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/DS18B20.d" -MT"Core/Src/DS18B20.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/DS18B20.o"
+arm-none-eabi-gcc -o "Pueba_tarjeta_desarrollo.elf" @"objects.list"   -mcpu=cortex-m0 -T"E:\GUSTAVO\UNAL\Semestre_2024-1\Diseno_Digital\DigitalDesing\Firmware\Pueba_tarjeta_desarrollo\STM32F030C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Pueba_tarjeta_desarrollo.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Pueba_tarjeta_desarrollo.elf
+ 
+arm-none-eabi-size  Pueba_tarjeta_desarrollo.elf 
+arm-none-eabi-objdump -h -S Pueba_tarjeta_desarrollo.elf  > "Pueba_tarjeta_desarrollo.list"
+   text	   data	    bss	    dec	    hex	filename
+  34400	    468	   2252	  37120	   9100	Pueba_tarjeta_desarrollo.elf
+Finished building: default.size.stdout
+ 
+Finished building: Pueba_tarjeta_desarrollo.list
+ 
+
+14:18:57 Build Finished. 0 errors, 0 warnings. (took 985ms)
+

@@ -4,4 +4,4 @@
 //org.eclipse.debug.core.PREFERRED_DELEGATES/org.eclipse.cdt.launch.postmortemLaunchType=org.eclipse.cdt.dsf.gdb.launch.coreCLaunch,debug,;
 //org.eclipse.debug.core.PREFERRED_DELEGATES/org.eclipse.cdt.launch.remoteApplicationLaunchType=org.eclipse.rse.remotecdt.dsf.debug,debug,;
 eclipse.preferences.version=1
-prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<watchExpressions>\r\n    <expression enabled\="true" text\="mem_usart2"/>\r\n</watchExpressions>\r\n
+prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<watchExpressions>\r\n    <expression enabled\="true" text\="Temp_byte1"/>\r\n    <expression enabled\="true" text\="Temp_byte2"/>\r\n    <expression enabled\="true" text\="size_to_send"/>\r\n    <expression enabled\="true" text\="temp_dec"/>\r\n    <expression enabled\="true" text\="__HAL_TIM_GET_COUNTER(&amp;htim3)"/>\r\n    <expression enabled\="true" text\="us"/>\r\n    <expression enabled\="true" text\="uwTick"/>\r\n</watchExpressions>\r\n

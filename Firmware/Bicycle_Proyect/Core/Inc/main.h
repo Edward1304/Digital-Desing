@@ -67,8 +67,8 @@ void Error_Handler(void);
 #define MESURE_VOLTAGE_IN_GPIO_Port GPIOA
 #define R_SPEED_LED_Pin GPIO_PIN_7
 #define R_SPEED_LED_GPIO_Port GPIOA
-#define R_SPEED_LEDB0_Pin GPIO_PIN_0
-#define R_SPEED_LEDB0_GPIO_Port GPIOB
+#define G_SPEED_LED_Pin GPIO_PIN_0
+#define G_SPEED_LED_GPIO_Port GPIOB
 #define B_SPEED_LED_Pin GPIO_PIN_1
 #define B_SPEED_LED_GPIO_Port GPIOB
 #define R_TEMPERATURE_LED_Pin GPIO_PIN_2
