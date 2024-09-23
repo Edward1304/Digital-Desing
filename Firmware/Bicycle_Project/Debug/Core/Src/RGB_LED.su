@@ -1,0 +1,5 @@
+../Core/Src/RGB_LED.c:10:6:RGB_Init	16	static
+../Core/Src/RGB_LED.c:20:6:RGB_RED_ON	16	static
+../Core/Src/RGB_LED.c:44:6:RGB_GREEN_ON	16	static
+../Core/Src/RGB_LED.c:68:6:RGB_BLUE_ON	16	static
+../Core/Src/RGB_LED.c:92:6:RGB_ALL_OFF	16	static

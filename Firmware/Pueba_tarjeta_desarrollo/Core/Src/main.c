@@ -103,28 +103,6 @@ int main(void)
   while (1)
   {
 
-//	  Presence = DS18B20_Start();
-//	  HAL_Delay(1);
-//	  DS18B20_Write(0xCC);
-//	  DS18B20_Write(0x44);
-//	  HAL_Delay(800);
-//
-//	  Presence = DS18B20_Start();
-//	  HAL_Delay(1);
-//	  DS18B20_Write(0xCC);
-//	  DS18B20_Write(0xBE);
-//
-//	  Temp_byte1 = DS18B20_Read();
-//	  Temp_byte2 = DS18B20_Read();
-//	  uint8_t read[6]= "Read= ";
-//
-//	  HAL_UART_Transmit(&huart1, (const uint8_t *)&read, 6, 1000);
-//	  size_to_send = sprintf( (char *)&transmit_text, "presence %d el primer %d y el segundo %d \r\n", Presence, Temp_byte1, Temp_byte2);
-//	  HAL_UART_Transmit(&huart1, (const uint8_t *)&transmit_text, size_to_send, 1000);
-//	  temp_dec = convert_temperature(Temp_byte1, Temp_byte2);
-//	  size_to_send = sprintf((char *)&transmit_text, "result temperature %0.2f \r\n\n", temp_dec);
-//	  HAL_UART_Transmit(&huart1, (const uint8_t *)&transmit_text, size_to_send, 1000);
-
 	  float temperature = Get_temperature();
 	  size_to_send = sprintf((char *)&transmit_text, "Temperature = %0.2f °C \r\n\n", temperature);
 	  HAL_UART_Transmit(&huart1, (const uint8_t *)&transmit_text, size_to_send, 500);

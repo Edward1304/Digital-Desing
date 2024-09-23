@@ -1,0 +1,18 @@
+#include "RGB_LED.h"
+
+RGB_LEDS_struct_t parameters_LEDS;
+
+void RGB_Init(RGB_LEDS_struct_t parameters)
+{
+	parameters_LEDS = parameters;
+}
+
+void RGB_RED_ON(ID_LED ID)
+{
+	HAL_GPIO_WritePin(parameters_LEDS.RED_Speed_Port, parameters_LEDS.RED_Speed_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(parameters_LEDS.GREEN_Speed_Port, parameters_LEDS.GREEN_Speed_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(parameters_LEDS.BLUE_Speed_Port, parameters_LEDS.BLUE_Speed_Pin, GPIO_PIN_RESET);
+}
+void RGB_GREEN_ON(ID_LED ID);
+void RGB_BLUE_ON(ID_LED ID);
+void RGB_ALL_OFF(ID_LED ID);

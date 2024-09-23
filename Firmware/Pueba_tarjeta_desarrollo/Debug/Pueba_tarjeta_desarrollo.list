@@ -27,25 +27,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000028  00000000  00000000  0000a1d4  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0000d673  00000000  00000000  0000a1fc  2**0
+ 12 .debug_info   0000d66b  00000000  00000000  0000a1fc  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 0000209c  00000000  00000000  0001786f  2**0
+ 13 .debug_abbrev 00002086  00000000  00000000  00017867  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00000cb0  00000000  00000000  00019910  2**3
+ 14 .debug_aranges 00000cb0  00000000  00000000  000198f0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_rnglists 000009ed  00000000  00000000  0001a5c0  2**0
+ 15 .debug_rnglists 000009ed  00000000  00000000  0001a5a0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  00011a16  00000000  00000000  0001afad  2**0
+ 16 .debug_macro  00011a16  00000000  00000000  0001af8d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000fefb  00000000  00000000  0002c9c3  2**0
+ 17 .debug_line   0000fefa  00000000  00000000  0002c9a3  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00067314  00000000  00000000  0003c8be  2**0
+ 18 .debug_str    00067314  00000000  00000000  0003c89d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  000a3bd2  2**0
+ 19 .comment      00000043  00000000  00000000  000a3bb1  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00003eb8  00000000  00000000  000a3c18  2**2
+ 20 .debug_frame  00003eb8  00000000  00000000  000a3bf4  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 0000008d  00000000  00000000  000a7ad0  2**0
+ 21 .debug_line_str 0000008d  00000000  00000000  000a7aac  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -4527,10 +4527,10 @@ Disassembly of section .text:
 	...
 
 080023f4 <delay>:
-uint8_t Temp_byte1;
-uint8_t Temp_byte2;
-float temp_dec;
-
+/*
+ * @brief	Wait the micro-seconds of the parameter.
+ * @retval	None
+ */
 static void delay ( uint16_t us )
 {
  80023f4:	b580      	push	{r7, lr}
@@ -4563,7 +4563,10 @@ static void delay ( uint16_t us )
  8002424:	200001f8 	.word	0x200001f8
 
 08002428 <Set_Pin_Input>:
-
+/*
+ * @brief	Configure pin as input
+ * @retval	None
+ */
 static void Set_Pin_Input (GPIO_TypeDef* GPIOx, uint16_t GPIO_PIN )
 {
  8002428:	b590      	push	{r4, r7, lr}
@@ -4609,7 +4612,10 @@ static void Set_Pin_Input (GPIO_TypeDef* GPIOx, uint16_t GPIO_PIN )
  800246c:	bd90      	pop	{r4, r7, pc}
 
 0800246e <Set_Pin_Output>:
-
+/*
+ * @brief Configure pin as output
+ * @retval None
+ */
 static void Set_Pin_Output (GPIO_TypeDef* GPIOx, uint16_t GPIO_PIN )
 {
  800246e:	b590      	push	{r4, r7, lr}
@@ -4656,7 +4662,10 @@ static void Set_Pin_Output (GPIO_TypeDef* GPIOx, uint16_t GPIO_PIN )
  80024b2:	bd90      	pop	{r4, r7, pc}
 
 080024b4 <DS18B20_Start>:
-
+ * 			with master.
+ * @retval	Return value of presence of the DS18B20 sensor. If value=1,
+ * 			detected sensor, but valure=0, the not detected sensor.
+ */
 static uint8_t DS18B20_Start ( void )
 {
  80024b4:	b580      	push	{r7, lr}
@@ -4730,7 +4739,10 @@ static uint8_t DS18B20_Start ( void )
  8002528:	bd80      	pop	{r7, pc}
 
 0800252a <DS18B20_Write>:
-
+/*
+ * @brief	Write a byte to the DS18B20 for start a process
+ * @retval	None
+ */
 static void DS18B20_Write ( uint8_t data )
 {
  800252a:	b580      	push	{r7, lr}
@@ -4837,7 +4849,10 @@ static void DS18B20_Write ( uint8_t data )
  80025cc:	bd80      	pop	{r7, pc}
 
 080025ce <DS18B20_Read>:
-
+/*
+ * @brief	Read byte of the DS18B20 sensor
+ * @retval	Byte returned by the DS18B20 sensor
+ */
 static uint8_t DS18B20_Read (void)
 {
  80025ce:	b580      	push	{r7, lr}
@@ -4931,7 +4946,10 @@ static uint8_t DS18B20_Read (void)
  8002662:	bd80      	pop	{r7, pc}
 
 08002664 <convert_temperature>:
-
+ * @param	byte_1 Byte #1 to convert
+ * @param	byte_2 Byte #2 to convert
+ * @retval	Decimal value of temperature
+ */
 static float convert_temperature(uint8_t byte_1, uint8_t byte_2)
 {
  8002664:	b580      	push	{r7, lr}
@@ -4983,7 +5001,10 @@ static float convert_temperature(uint8_t byte_1, uint8_t byte_2)
  80026bc:	3fb00000 	.word	0x3fb00000
 
 080026c0 <Get_temperature>:
-
+/*
+ * @brief	Get the temperature value
+ * @retval	float with the temperature value
+ */
 float Get_temperature( void )
 {
  80026c0:	b580      	push	{r7, lr}
@@ -5106,10 +5127,10 @@ int main(void)
  800276e:	4b12      	ldr	r3, [pc, #72]	@ (80027b8 <main+0x64>)
  8002770:	0018      	movs	r0, r3
  8002772:	f001 fc3d 	bl	8003ff0 <HAL_TIM_Base_Start_IT>
-//	  HAL_UART_Transmit(&huart1, (const uint8_t *)&transmit_text, size_to_send, 1000);
-//	  temp_dec = convert_temperature(Temp_byte1, Temp_byte2);
-//	  size_to_send = sprintf((char *)&transmit_text, "result temperature %0.2f \r\n\n", temp_dec);
-//	  HAL_UART_Transmit(&huart1, (const uint8_t *)&transmit_text, size_to_send, 1000);
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
 
 	  float temperature = Get_temperature();
  8002776:	f7ff ffa3 	bl	80026c0 <Get_temperature>
