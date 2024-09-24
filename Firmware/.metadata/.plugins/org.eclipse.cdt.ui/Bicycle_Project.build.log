@@ -1,0 +1,17 @@
+14:54:26 **** Incremental Build of configuration Debug for project Bicycle_Project ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bicycle_Project.elf" @"objects.list"   -mcpu=cortex-m0 -T"E:\GUSTAVO\UNAL\Semestre_2024-1\Diseno_Digital\DigitalDesing\Firmware\Bicycle_Project\STM32F030C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bicycle_Project.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bicycle_Project.elf
+ 
+arm-none-eabi-size  Bicycle_Project.elf 
+arm-none-eabi-objdump -h -S Bicycle_Project.elf  > "Bicycle_Project.list"
+   text	   data	    bss	    dec	    hex	filename
+  35184	    468	   2596	  38248	   9568	Bicycle_Project.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bicycle_Project.list
+ 
+
+14:54:27 Build Finished. 0 errors, 0 warnings. (took 1s.73ms)
+
