@@ -53,7 +53,9 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-
+#define TX_BUFFER	400
+#define RX_BUFFER	255
+#define LENGTH_COMMAND	4
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
@@ -74,7 +76,10 @@ void Error_Handler(void);
 #define SWO_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
-
+typedef enum{
+	FLAG_SET,
+	FLAG_RELEASED,
+}flag_enum;
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

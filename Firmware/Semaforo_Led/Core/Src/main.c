@@ -41,7 +41,6 @@
 
 /* Private variables ---------------------------------------------------------*/
 TIM_HandleTypeDef htim3;
-TIM_HandleTypeDef htim4;
 
 UART_HandleTypeDef huart2;
 
@@ -49,9 +48,11 @@ UART_HandleTypeDef huart2;
 extern state_machine_enum state_machine;
 flag_enum button_flag;
 flag_enum timer_switch_flag;
-flag_enum timer_indicator_flag;
-flag_enum carros_flag;
-flag_enum pedestrians_flag;
+flag_enum uart2_received_flag;
+uint8_t byte_counter;
+
+char string_to_send[TX_BUFFER];
+char string_to_receive[RX_BUFFER];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -59,7 +60,6 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_TIM3_Init(void);
-static void MX_TIM4_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -71,6 +71,19 @@ static void MX_TIM4_Init(void);
 	 if(GPIO_Pin == Button_Pin)
 		 button_flag = FLAG_SET;
 }
+
+ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+ {
+   if( huart == &huart2 ){
+	   if(string_to_receive[byte_counter] == '$'){
+		   uart2_received_flag = FLAG_SET;
+	   }else{
+		   byte_counter++;
+		   HAL_UART_Receive_IT(&huart2, (uint8_t *)&string_to_receive[byte_counter], LENGTH_COMMAND);
+	   }
+   }
+ }
+
 /* USER CODE END 0 */
 
 /**
@@ -104,22 +117,48 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   MX_TIM3_Init();
-  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
-  button_flag=FLAG_RELEASED;
-  timer_switch_flag=FLAG_RELEASED;
-  timer_indicator_flag=FLAG_RELEASED;
+  button_flag = FLAG_RELEASED;
+  timer_switch_flag = FLAG_RELEASED;
+  uart2_received_flag = FLAG_RELEASED;
+  byte_counter = 0;
   initialize_state_machine();
   HAL_TIM_Base_Start_IT(&htim3);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  uint8_t length_to_send;
+  //HAL_StatusTypeDef uart_hal_status;
+  length_to_send = sprintf(&string_to_send[0],"HOLA MUNDO\r\n");
+  HAL_UART_Transmit(&huart2,(const uint8_t *)&string_to_send[0], length_to_send, 100);
+  HAL_UART_Receive_IT(&huart2, (uint8_t *)&string_to_receive[byte_counter], LENGTH_COMMAND);
+  string_to_receive[LENGTH_COMMAND] = 0x00;
+
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+	  if(uart2_received_flag == FLAG_SET){
+		  uart2_received_flag = FLAG_RELEASED;
+		  length_to_send = sprintf(&string_to_send[0],"Message received: %s \r\n", (char *)&string_to_receive[0]);
+		  HAL_UART_Transmit(&huart2,(const uint8_t *)&string_to_send[0], length_to_send, 100);
+		  byte_counter = 0;
+		  HAL_UART_Receive_IT(&huart2, (uint8_t *)&string_to_receive[0], LENGTH_COMMAND);
+
+	  }
+
+	  /*uart_hal_status = HAL_UART_Receive(&huart2, (uint8_t *)&string_to_receive[0], 4, 500);
+
+	  if(uart_hal_status == HAL_OK){
+		  length_to_send = sprintf(&string_to_send[0],"Message received: %s \r\n", (char *)&string_to_receive[0]);
+		  HAL_UART_Transmit(&huart2,(const uint8_t *)&string_to_send[0], length_to_send, 100);
+	  }else if(uart_hal_status == HAL_TIMEOUT){
+		  length_to_send = sprintf(&string_to_send[0],"Message timeout \r\n");
+		  HAL_UART_Transmit(&huart2,(const uint8_t *)&string_to_send[0], length_to_send, 100);
+	  }*/
 
 	  check_state_machine();
 
@@ -208,7 +247,7 @@ static void MX_TIM3_Init(void)
   htim3.Instance = TIM3;
   htim3.Init.Prescaler = 8000-1;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 20000-1;
+  htim3.Init.Period = 2500-1;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
@@ -229,51 +268,6 @@ static void MX_TIM3_Init(void)
   /* USER CODE BEGIN TIM3_Init 2 */
 
   /* USER CODE END TIM3_Init 2 */
-
-}
-
-/**
-  * @brief TIM4 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_TIM4_Init(void)
-{
-
-  /* USER CODE BEGIN TIM4_Init 0 */
-
-  /* USER CODE END TIM4_Init 0 */
-
-  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
-  TIM_MasterConfigTypeDef sMasterConfig = {0};
-
-  /* USER CODE BEGIN TIM4_Init 1 */
-
-  /* USER CODE END TIM4_Init 1 */
-  htim4.Instance = TIM4;
-  htim4.Init.Prescaler = 8000-1;
-  htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim4.Init.Period = 6000-1;
-  htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-  if (HAL_TIM_Base_Init(&htim4) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-  if (HAL_TIM_ConfigClockSource(&htim4, &sClockSourceConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
-  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  if (HAL_TIMEx_MasterConfigSynchronization(&htim4, &sMasterConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN TIM4_Init 2 */
-
-  /* USER CODE END TIM4_Init 2 */
 
 }
 

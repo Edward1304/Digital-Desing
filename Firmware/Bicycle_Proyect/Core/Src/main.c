@@ -76,6 +76,7 @@ static void MX_I2C2_Init(void);
   */
 int main(void)
 {
+
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -399,11 +400,16 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOF_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, R_SPEED_LED_Pin|SETTING_LED_Pin|GPIO_PIN_12|FLASH_CS_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, R_SPEED_LED_Pin|SETTING_LED_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, R_SPEED_LEDB0_Pin|B_SPEED_LED_Pin|R_TEMPERATURE_LED_Pin|G_TEMPERATURE_LED_Pin
-                          |B_TEMPERATURE_LED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, G_SPEED_LED_Pin|B_SPEED_LED_Pin, GPIO_PIN_SET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, R_TEMPERATURE_LED_Pin|G_TEMPERATURE_LED_Pin|B_TEMPERATURE_LED_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12|FLASH_CS_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : SPEED_SENSOR_DIGITAL_PIN_Pin */
   GPIO_InitStruct.Pin = SPEED_SENSOR_DIGITAL_PIN_Pin;
@@ -418,9 +424,9 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : R_SPEED_LEDB0_Pin B_SPEED_LED_Pin R_TEMPERATURE_LED_Pin G_TEMPERATURE_LED_Pin
+  /*Configure GPIO pins : G_SPEED_LED_Pin B_SPEED_LED_Pin R_TEMPERATURE_LED_Pin G_TEMPERATURE_LED_Pin
                            B_TEMPERATURE_LED_Pin */
-  GPIO_InitStruct.Pin = R_SPEED_LEDB0_Pin|B_SPEED_LED_Pin|R_TEMPERATURE_LED_Pin|G_TEMPERATURE_LED_Pin
+  GPIO_InitStruct.Pin = G_SPEED_LED_Pin|B_SPEED_LED_Pin|R_TEMPERATURE_LED_Pin|G_TEMPERATURE_LED_Pin
                           |B_TEMPERATURE_LED_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;

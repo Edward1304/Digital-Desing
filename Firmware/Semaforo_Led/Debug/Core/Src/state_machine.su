@@ -1,4 +1,7 @@
-../Core/Src/state_machine.c:10:6:initialize_state_machine	4	static
-../Core/Src/state_machine.c:14:6:check_state_machine	8	static
-../Core/Src/state_machine.c:27:6:s0_state_function	8	static
-../Core/Src/state_machine.c:55:6:s1_state_function	8	static
+../Core/Src/state_machine.c:16:6:initialize_state_machine	8	static
+../Core/Src/state_machine.c:22:6:config_times_and_cariables_cruce_carros	4	static
+../Core/Src/state_machine.c:31:6:config_times_and_variables_cruce_peatones	4	static
+../Core/Src/state_machine.c:39:6:patron_luz	8	static
+../Core/Src/state_machine.c:56:6:check_state_machine	8	static
+../Core/Src/state_machine.c:69:6:cruce_carro_state_function	8	static
+../Core/Src/state_machine.c:101:6:cruce_peaton_state_function	8	static

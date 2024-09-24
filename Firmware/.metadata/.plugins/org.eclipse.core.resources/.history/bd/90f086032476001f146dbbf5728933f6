@@ -1,0 +1,131 @@
+#include "DS18B20.h"
+
+extern TIM_HandleTypeDef htim3;
+extern UART_HandleTypeDef huart1;
+
+void delay ( uint16_t us )
+{
+	HAL_UART_Transmit(&huart1, "Inicio delay\r\n", 14, 1000);
+	__HAL_TIM_SET_COUNTER(&htim3, 0x0000);	//set the counter value a 0
+	while(__HAL_TIM_GET_COUNTER(&htim3) < us)	//wait for the counter to reach the us input in the parameter us
+	{
+		HAL_UART_Transmit(&huart1, "delay\r\n", 7, 1000);
+	}
+	HAL_UART_Transmit(&huart1, "Fin delay\r\n", 11, 1000);
+}
+
+void Set_Pin_Input (GPIO_TypeDef* GPIOx, uint16_t GPIO_PIN )
+{
+
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+	GPIO_InitStruct.Pin = GPIO_PIN;
+	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+	GPIO_InitStruct.Pull = GPIO_PULLUP;
+	HAL_GPIO_Init(GPIOx, &GPIO_InitStruct);
+}
+
+void Set_Pin_Output (GPIO_TypeDef* GPIOx, uint16_t GPIO_PIN )
+{
+
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+	GPIO_InitStruct.Pin = GPIO_PIN;
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(GPIOx, &GPIO_InitStruct);
+
+}
+
+uint8_t DS18B20_Start ( void )
+{
+
+	uint8_t Response = 0;
+	HAL_UART_Transmit(&huart1, "DS18B20_Start INIT\r\n", 20, 1000);
+	Set_Pin_Output(DS18B20_GPIO_Port, DS18B20_Pin);
+	HAL_UART_Transmit(&huart1, "Pin como salida\r\n", 17, 1000);
+	HAL_GPIO_WritePin(DS18B20_GPIO_Port, DS18B20_Pin, GPIO_PIN_SET);
+	HAL_UART_Transmit(&huart1, "Estado de inicio enviado\r\n", 26, 1000);
+	delay (480);
+	HAL_UART_Transmit(&huart1, "Fin delay 480\r\n", 15, 1000);
+
+	Set_Pin_Input(DS18B20_GPIO_Port, DS18B20_Pin);
+	HAL_UART_Transmit(&huart1, "Pin definido como entrada\r\n", 27, 1000);
+
+	delay (80);
+
+	if(!(HAL_GPIO_ReadPin(DS18B20_GPIO_Port, DS18B20_Pin))) Response = 1;
+	else Response = 0;
+
+	delay (400);
+
+	return Response;
+}
+
+void DS18B20_Write ( uint8_t data )
+{
+
+	Set_Pin_Output(DS18B20_GPIO_Port, DS18B20_Pin);
+
+	for (int i=0; i<8; i++)
+	{
+
+		if ((data & (1<<i)) !=0 )	//if the bit is high
+		{
+
+			//write 1
+			Set_Pin_Output(DS18B20_GPIO_Port, DS18B20_Pin);
+			HAL_GPIO_WritePin(DS18B20_GPIO_Port, DS18B20_Pin, GPIO_PIN_RESET);
+			delay (1);
+
+			Set_Pin_Input(DS18B20_GPIO_Port, DS18B20_Pin);
+			delay (60);
+
+		}else //if the bit is low
+		{
+
+			//write 0
+			Set_Pin_Output(DS18B20_GPIO_Port, DS18B20_Pin);
+			HAL_GPIO_WritePin(DS18B20_GPIO_Port, DS18B20_Pin, GPIO_PIN_RESET);
+			delay (60); //wait for 60 us
+
+			Set_Pin_Input(DS18B20_GPIO_Port, DS18B20_Pin);
+		}
+	}
+}
+
+uint8_t DS18B20_Read (void)
+{
+
+	uint8_t value = 0;
+	Set_Pin_Input(DS18B20_GPIO_Port, DS18B20_Pin);
+
+	for(int i=0; i<8; i++)
+	{
+		Set_Pin_Output(DS18B20_GPIO_Port, DS18B20_Pin);
+
+		HAL_GPIO_WritePin(DS18B20_GPIO_Port, DS18B20_Pin, GPIO_PIN_RESET);
+		delay (2);
+
+		Set_Pin_Input(DS18B20_GPIO_Port, DS18B20_Pin);
+		delay (5);
+		if(HAL_GPIO_ReadPin(DS18B20_GPIO_Port, DS18B20_Pin))
+		{
+			value |= 1<<i; //read=1
+		}
+		delay (60);
+	}
+	return value;
+}
+
+float convert_temperatue(uint8_t byte_1, uint8_t byte_2)
+{
+	uint16_t tempval = byte_2 << 8 | byte_1;
+	float result_temp = 0.0625*tempval;
+
+	return result_temp;
+}
+
+
+
+

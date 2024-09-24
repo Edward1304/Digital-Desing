@@ -1,0 +1,13 @@
+/*
+ * DS18B20.h
+ *
+ *  Created on: Sep 18, 2024
+ *      Author: PISSO
+ */
+
+#ifndef INC_DS18B20_H_
+#define INC_DS18B20_H_
+
+
+
+#endif /* INC_DS18B20_H_ */

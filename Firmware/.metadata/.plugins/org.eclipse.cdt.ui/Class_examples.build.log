@@ -1,10 +1,29 @@
-21:09:14 **** Incremental Build of configuration Debug for project Class_examples ****
+10:00:09 **** Build of configuration Debug for project Class_examples ****
 make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:97:11: warning: unused variable 'length_to_send' [-Wunused-variable]
+   97 |   uint8_t length_to_send = 0;
+      |           ^~~~~~~~~~~~~~
+../Core/Src/main.c:95:8: warning: unused variable 'string_to_send' [-Wunused-variable]
+   95 |   char string_to_send[TX_BUFFER];
+      |        ^~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:47:9: warning: array 'string_receive' assumed to have one element
+   47 | uint8_t string_receive[];
+      |         ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Class_examples.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\GUSTAVO\UNAL\Semestre_2024-1\Diseno_Digital\DigitalDesing\Firmware\Class_examples\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Class_examples.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.14.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Class_examples.elf has a LOAD segment with RWX permissions
+Finished building target: Class_examples.elf
+ 
 arm-none-eabi-size  Class_examples.elf 
+arm-none-eabi-objdump -h -S Class_examples.elf  > "Class_examples.list"
    text	   data	    bss	    dec	    hex	filename
-  12496	     20	   1708	  14224	   3790	Class_examples.elf
+  16048	     20	   1716	  17784	   4578	Class_examples.elf
 Finished building: default.size.stdout
  
+Finished building: Class_examples.list
+ 
 
-21:09:20 Build Finished. 0 errors, 0 warnings. (took 6s.23ms)
+10:00:12 Build Finished. 0 errors, 4 warnings. (took 2s.945ms)
 

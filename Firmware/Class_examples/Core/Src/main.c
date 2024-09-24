@@ -43,7 +43,8 @@
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-
+flag_enum uart2_receive_flag;
+uint8_t string_receive[];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -90,13 +91,21 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  uart2_receive_flag = FLAG_RELEASED;
+  char string_to_send[TX_BUFFER];
+  char string_to_receive[RX_BUFFER];
+  uint8_t length_to_send = 0;
+  HAL_UART_Receive_IT(&huart2,(uint8_t *)&string_to_receive[0], 4);
+  string_receive[LENGTH_COMMAND]=0x00;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
+
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -230,6 +239,21 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+
+	if(huart == &huart2){
+
+	}
+
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(huart);
+
+  /* NOTE : This function should not be modified, when the callback is needed,
+            the HAL_UART_RxCpltCallback can be implemented in the user file.
+   */
+}
 
 /* USER CODE END 4 */
 

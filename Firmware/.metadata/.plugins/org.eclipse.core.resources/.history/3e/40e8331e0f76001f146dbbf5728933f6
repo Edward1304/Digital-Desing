@@ -1,0 +1,48 @@
+#include "DS18B20.h"
+
+void Set_Pin_Input (GPIO_TypeDef GPIOx, uint16_t GPIO_PIN ){
+
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+	GPIO_InitStruct.Pin = GPIO_PIN;
+	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+	GPIO_InitStruct.Pull = GPIO_PULLUP;
+	HAL_GPIO_Init(GPIOx, &GPIO_InitStruct);
+}
+
+void Set_Pin_Output (GPIO_TypeDef GPIOx, uint16_t GPIO_PIN ){
+
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+	GPIO_InitStruct.Pin = GPIO_PIN;
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Pull = GPIO_PULLUP;
+	HAL_GPIO_Init(GPIOx, &GPIO_InitStruct);
+
+}
+
+void DS18B20_Start ( void ){
+
+	uint8_t Response =0;
+	Set_Pin_Output(DS18B20_GPIO_Port, DS18B20_PIN);
+	HAL_GPIO_WritePin(DS18B20_GPIO_Port, DS18B20_PIN, GPIO_PIN_SET);
+	delay (480);
+
+	Set_Pin_Input(DS18B20_GPIO_Port, DS18B20_PIN);
+	delay (80);
+
+	if(!(HAL_GPIO_ReadPin(DS18B20_GPIO_Port, DS18B20_PIN))) Response = 1;
+	else Response = 0;
+
+	delay (400);
+
+	return Response;
+}
+
+void DS18B20_Write ( void ){
+
+
+}
+
+
+

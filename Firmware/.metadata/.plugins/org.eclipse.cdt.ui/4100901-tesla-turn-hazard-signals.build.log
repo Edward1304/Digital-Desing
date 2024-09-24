@@ -1,0 +1,10 @@
+09:14:48 **** Incremental Build of configuration Debug for project 4100901-tesla-turn-hazard-signals ****
+make -j8 all 
+arm-none-eabi-size  4100901-tesla-turn-hazard-signals.elf 
+   text	   data	    bss	    dec	    hex	filename
+  17416	     20	   1892	  19328	   4b80	4100901-tesla-turn-hazard-signals.elf
+Finished building: default.size.stdout
+ 
+
+09:14:52 Build Finished. 0 errors, 0 warnings. (took 3s.564ms)
+

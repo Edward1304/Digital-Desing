@@ -42,6 +42,8 @@
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
 extern flag_enum button_flag;
+extern uint8_t time_250ms;
+extern uint8_t time_250ms_for_seconds;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -56,7 +58,7 @@ extern flag_enum button_flag;
 
 /* External variables --------------------------------------------------------*/
 extern TIM_HandleTypeDef htim3;
-extern TIM_HandleTypeDef htim4;
+extern UART_HandleTypeDef huart2;
 /* USER CODE BEGIN EV */
 extern flag_enum timer_switch_flag;
 extern flag_enum timer_indicator_flag;
@@ -211,21 +213,26 @@ void TIM3_IRQHandler(void)
   HAL_TIM_IRQHandler(&htim3);
   /* USER CODE BEGIN TIM3_IRQn 1 */
   timer_switch_flag = FLAG_SET;
+  time_250ms++;
+  time_250ms_for_seconds++;
+//  if( time_250ms == 8 ){
+//	  time_250ms = 0;
+//  }
   /* USER CODE END TIM3_IRQn 1 */
 }
 
 /**
-  * @brief This function handles TIM4 global interrupt.
+  * @brief This function handles USART2 global interrupt.
   */
-void TIM4_IRQHandler(void)
+void USART2_IRQHandler(void)
 {
-  /* USER CODE BEGIN TIM4_IRQn 0 */
+  /* USER CODE BEGIN USART2_IRQn 0 */
 
-  /* USER CODE END TIM4_IRQn 0 */
-  HAL_TIM_IRQHandler(&htim4);
-  /* USER CODE BEGIN TIM4_IRQn 1 */
-  timer_indicator_flag = FLAG_SET;
-  /* USER CODE END TIM4_IRQn 1 */
+  /* USER CODE END USART2_IRQn 0 */
+  HAL_UART_IRQHandler(&huart2);
+  /* USER CODE BEGIN USART2_IRQn 1 */
+
+  /* USER CODE END USART2_IRQn 1 */
 }
 
 /**

@@ -1,0 +1,10 @@
+14:08:19 **** Incremental Build of configuration Debug for project 4100901-Final_Exam-Drill ****
+make -j8 all 
+arm-none-eabi-size  4100901-Final_Exam-Drill.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18808	    104	   3168	  22080	   5640	4100901-Final_Exam-Drill.elf
+Finished building: default.size.stdout
+ 
+
+14:08:20 Build Finished. 0 errors, 0 warnings. (took 310ms)
+
