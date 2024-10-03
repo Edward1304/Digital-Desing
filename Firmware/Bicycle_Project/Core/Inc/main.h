@@ -33,8 +33,10 @@ extern "C" {
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include "string.h"
+#include <math.h>
 #include "DS18B20.h"
 #include "RGB_LED.h"
+#include "ring_buffer.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -44,7 +46,10 @@ extern "C" {
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
-
+typedef enum{
+	False,
+	True
+}boolean_enum;
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
@@ -105,7 +110,23 @@ void Error_Handler(void);
 #define UART_RX_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
+#define MAX_TIME_WAIT_TO_TRANSMIT	100
+#define WAIT_TEMPERATURE_PRINT		10000	//Time in mili-seconds
+#define	CAPACITY_USART1				16
+#define CAPACITY_BUFFER_USART1_RX	64
+#define CAPACITY_TRANSMIT_TEXT		128
+#define CAPACITY_KEY				16
+#define CAPACITY_VALUE				8
 
+#define MIN_TEMPERATURE_MEASURE_DS18B20_SENSOR 	-50
+#define MAX_TEMPERATURE_MEASURE_DS18B20_SENSOR 	120
+#define MAX_MEASURES_OF_TEMPERATURE_FOR_MEAN	6
+#define ID_TEMP_MIN_RED_LED 					"TEMP_MIN_R"
+#define ID_TEMP_MAX_RED_LED 					"TEMP_MAX_R"
+#define ID_TEMP_MIN_GREEN_LED 					"TEMP_MIN_G"
+#define ID_TEMP_MAX_GREEN_LED 					"TEMP_MAX_G"
+#define ID_TEMP_MIN_BLUE_LED 					"TEMP_MIN_B"
+#define ID_TEMP_MAX_BLUE_LED 					"TEMP_MAX_B"
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

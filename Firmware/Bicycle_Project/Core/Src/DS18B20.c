@@ -185,7 +185,7 @@ float DS18B20_Get_temperature( void )
 	HAL_Delay(1);
 	DS18B20_Write(SKIP_ROM);
 	DS18B20_Write(CONVERT_T);
-	HAL_Delay(800);
+	//HAL_Delay(50);
 
 	Presence = DS18B20_Start();
 	HAL_Delay(1);

@@ -49,7 +49,37 @@ TIM_HandleTypeDef htim3;
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
+ring_buffer_t rb_usart1;
+uint8_t rb_buffer_usart1[CAPACITY_USART1];
+uint8_t data_usart1_rx;
+uint8_t data_rb_usart1;
+uint8_t buffer_usart1_rx[CAPACITY_BUFFER_USART1_RX];
+uint8_t read_buffer_ring_counter;
 
+uint8_t key[CAPACITY_KEY];
+uint8_t value_str[CAPACITY_VALUE];
+double value_decimal;
+
+uint8_t transmit_text[CAPACITY_TRANSMIT_TEXT];
+uint8_t size_to_send;
+
+uint32_t temperature_printing_control;
+
+RGB_LEDS_struct_t parameter_RGB_leds;
+
+boolean_enum key_flag;
+boolean_enum new_parameter_to_set_flag;
+
+float temperature;
+float temperature_mean;
+uint8_t counter_for_mean;
+float values_for_mean[MAX_MEASURES_OF_TEMPERATURE_FOR_MEAN];
+int8_t min_red_temperature;
+int8_t max_red_temperature;
+int8_t min_green_temperature;
+int8_t max_green_temperature;
+int8_t min_blue_temperature;
+int8_t max_blue_temperature;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -60,14 +90,123 @@ static void MX_TIM3_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_ADC_Init(void);
 /* USER CODE BEGIN PFP */
-
+void print_temperature(void);
+void update_temperature_indicator(void);
+void set_value_received(void);
+void calculate_mean_temperature(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint8_t transmit_text[128];
-uint8_t size_to_send;
-RGB_LEDS_struct_t parameter_RGB_leds;
+//int _write(int file, char *ptr, int len)
+//{
+//  HAL_UART_Transmit(&huart1, (uint8_t *)ptr, len, MAX_TIME_WAIT_TO_TRANSMIT);
+//  return len;
+//}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	if (huart->Instance == USART1) {
+		data_usart1_rx = USART1->RDR;
+		ring_buffer_write(&rb_usart1, data_usart1_rx);
+		HAL_UART_Receive_IT(&huart1, &data_usart1_rx, 1);
+	}
+}
+
+void set_value_received()
+{
+	boolean_enum error_value = False;
+
+	if(!strcmp((const char *)&key, (const char *)ID_TEMP_MIN_RED_LED))
+	{
+		if((value_decimal >= max_green_temperature) && (value_decimal < max_red_temperature))
+		{
+			min_red_temperature = (int8_t)value_decimal;
+		}else{error_value = True;}
+
+	}else if(!strcmp((const char *)&key, (const char *)ID_TEMP_MAX_RED_LED))
+		{
+			if((value_decimal > min_red_temperature) && (value_decimal <= MAX_TEMPERATURE_MEASURE_DS18B20_SENSOR))
+			{
+				max_red_temperature = (int8_t)value_decimal;
+			}else{error_value = True;}
+		}else if(!strcmp((const char *)&key, (const char *)ID_TEMP_MIN_GREEN_LED))
+			{
+				if((value_decimal >= max_blue_temperature) && (value_decimal < max_green_temperature))
+				{
+					min_green_temperature = (int8_t)value_decimal;
+				}else{error_value = True;}
+			}else if(!strcmp((const char *)&key, (const char *)ID_TEMP_MAX_GREEN_LED))
+				{
+					if((value_decimal > min_green_temperature) && (value_decimal <= min_red_temperature))
+					{
+						max_green_temperature = (int8_t)value_decimal;
+					}else{error_value = True;}
+				}else if(!strcmp((const char *)&key, (const char *)ID_TEMP_MIN_BLUE_LED))
+					{
+						if((value_decimal >= MIN_TEMPERATURE_MEASURE_DS18B20_SENSOR) && (value_decimal < max_blue_temperature))
+						{
+							min_blue_temperature = (int8_t)value_decimal;
+						}else{error_value = True;}
+					}else if(!strcmp((const char *)&key, (const char *)ID_TEMP_MAX_BLUE_LED))
+						{
+							if((value_decimal > min_blue_temperature) && (value_decimal <= min_green_temperature))
+							{
+								max_blue_temperature = (int8_t)value_decimal;
+							}else{error_value = True;}
+						}
+
+	if(error_value == True)
+	{
+		size_to_send = sprintf((char *)&transmit_text, "\r\n---------------\r\n!Error configuring the value, verify the ranges!\r\n---------------\r\n");
+	}else{
+		size_to_send = sprintf((char *)&transmit_text, "\r\n---------------\r\n%s=%d configured successfully!\r\n---------------\r\n", (char *)&key, (int)value_decimal);
+	}
+
+	HAL_UART_Transmit(&huart1, (const uint8_t *)&transmit_text, size_to_send, MAX_TIME_WAIT_TO_TRANSMIT);
+	new_parameter_to_set_flag = False;
+}
+
+void print_temperature()
+{
+	temperature = DS18B20_Get_temperature();
+	size_to_send = sprintf((char *)&transmit_text, "Temperature = %0.2f °C \r\n", temperature);
+	HAL_UART_Transmit(&huart1, (const uint8_t *)&transmit_text, size_to_send, 500);
+
+	values_for_mean[counter_for_mean-1] = temperature;
+
+	temperature_printing_control = HAL_GetTick();
+}
+
+void update_temperature_indicator()
+{
+	if((temperature >= min_blue_temperature) && (temperature <= max_blue_temperature)){
+		RGB_BLUE_ON(TEMPERATURE);
+	}else if((temperature > min_green_temperature) && (temperature <= max_green_temperature)){
+		RGB_GREEN_ON(TEMPERATURE);
+	}else if((temperature > min_red_temperature) && (temperature <= max_red_temperature)){
+		RGB_RED_ON(TEMPERATURE);
+	}else{
+		RGB_ALL_OFF(TEMPERATURE);
+	}
+}
+
+void calculate_mean_temperature()
+{
+	float temporal_temperature_mean = 0;
+
+	for(int i=0; i<MAX_MEASURES_OF_TEMPERATURE_FOR_MEAN; i++)
+	{
+	 temporal_temperature_mean += values_for_mean[i];
+	}
+	temperature_mean = temporal_temperature_mean/MAX_MEASURES_OF_TEMPERATURE_FOR_MEAN;
+
+	size_to_send = sprintf((char *)&transmit_text, "Mean temperature= %0.2f\r\n", temperature_mean);
+	HAL_UART_Transmit(&huart1, (const uint8_t *)&transmit_text, size_to_send, MAX_TIME_WAIT_TO_TRANSMIT);
+	counter_for_mean = 0;
+	memset(&values_for_mean, 0, sizeof(values_for_mean));
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -104,6 +243,7 @@ int main(void)
   MX_USART1_UART_Init();
   MX_ADC_Init();
   /* USER CODE BEGIN 2 */
+
   HAL_TIM_Base_Start_IT(&htim3);
   DS18B20_Init(htim3, DS18B20_GPIO_Port, DS18B20_Pin);
 
@@ -122,16 +262,119 @@ int main(void)
   parameter_RGB_leds.BLUE_Temperature_Pin = B_TEMP_LED_Pin;
 
   RGB_Init(parameter_RGB_leds);
+
+  ring_buffer_init(&rb_usart1, rb_buffer_usart1, CAPACITY_USART1);
+  HAL_UART_Receive_IT(&huart1, &data_usart1_rx, 1);
+
+  key_flag = False;
+  new_parameter_to_set_flag = False;
+  read_buffer_ring_counter = 0;
+  value_decimal = 0;
+
+  temperature = 0;
+  temperature_mean = 0;
+  counter_for_mean = 0;
+  min_blue_temperature = 0;
+  max_blue_temperature = 10;
+  min_green_temperature = 10;
+  max_green_temperature = 20;
+  min_red_temperature = 20;
+  max_red_temperature = 30;
+
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  float temperature = DS18B20_Get_temperature();
-	  size_to_send = sprintf((char *)&transmit_text, "Temperature = %0.2f °C \r\n\n", temperature);
-	  HAL_UART_Transmit(&huart1, (const uint8_t *)&transmit_text, size_to_send, 500);
-	  HAL_Delay(1000);
+
+	  /*
+	   *Check if UART have any data and separate the key and
+	   *value for validation
+	   */
+	  if(ring_buffer_is_empty(&rb_usart1) != 1)						//Si el buffer de rb_usart1 tiene datos para leer
+	  {
+		  ring_buffer_read(&rb_usart1, &data_rb_usart1);			//lee un dato del buffer
+
+
+		  /*
+		   * Si detecta que el dato leído es igual al caracter "="
+		   * Porcede a guardar lo que se encuentre en el arreglo
+		   * buffer_usart1_rx en la variable "key"
+		   */
+		  if((data_rb_usart1 == '=') && (key_flag == False))
+		  {
+			  memset(&key, 0, sizeof(key));
+			  strcpy((char *)&key, (const char *)&buffer_usart1_rx);
+
+			  memset(&buffer_usart1_rx, 0, sizeof(buffer_usart1_rx));
+			  read_buffer_ring_counter = 0;
+			  key_flag = True;
+
+			  size_to_send = sprintf((char *)&transmit_text, "UART received: Key= %s\t", key);
+	  		  HAL_UART_Transmit(&huart1, (const uint8_t *)&transmit_text, size_to_send, MAX_TIME_WAIT_TO_TRANSMIT);
+
+			  continue;
+		  }
+
+		  buffer_usart1_rx[read_buffer_ring_counter] = data_rb_usart1;	//Va llenando un nuevo arreglo con el dato leído dle buffer
+
+
+		  /*
+		   * Cuando ya no hay datos para leer, procede a guardar el arrelo
+		   * buffer_usart1_rx en la variable value
+		   */
+		  if(ring_buffer_size(&rb_usart1) == 0 && key_flag == True)
+		  {
+			  value_decimal = 0;
+			  memset(&value_str, 0, sizeof(value_str));
+			  strcpy((char *)&value_str, (const char *)&buffer_usart1_rx);
+
+			  for(int i = 0; i<strlen((const char *)value_str); i++)
+			  {
+				  value_decimal += (value_str[i]-'0') * pow(10, (strlen((const char *)value_str)-1-i));
+			  }
+
+			  memset(&buffer_usart1_rx, 0, sizeof(buffer_usart1_rx));
+			  read_buffer_ring_counter = 0;
+			  key_flag = False;
+
+			  size_to_send = sprintf((char *)&transmit_text, "Value= %s\r\n", value_str);
+			  HAL_UART_Transmit(&huart1, (const uint8_t *)&transmit_text, size_to_send, MAX_TIME_WAIT_TO_TRANSMIT);
+
+			  new_parameter_to_set_flag = True;
+			  continue;
+		  }
+
+		  read_buffer_ring_counter ++; //Va aumentando el contador de control del arreglo buffer_usart1_rx
+	  }
+
+	  /*
+	   * After receive a new value, it sets it in the corresponding variable
+	   */
+	  if(new_parameter_to_set_flag == True)
+	  {
+		  set_value_received();
+	  }
+
+	  /*
+	  *Wait a time specified in WAIT_TEMPERATURE_PRINT and
+	  *temperature print
+	  */
+	  if(HAL_GetTick() - temperature_printing_control >= WAIT_TEMPERATURE_PRINT)
+	  {
+		 counter_for_mean++;
+
+		 print_temperature();
+		 update_temperature_indicator();
+
+		 if(counter_for_mean == MAX_MEASURES_OF_TEMPERATURE_FOR_MEAN)
+		 {
+			 calculate_mean_temperature();
+		 }
+
+	  }
 
     /* USER CODE END WHILE */
 
@@ -377,12 +620,14 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, DS18B20_Pin|B_TEMP_LED_Pin|SETTING_LED_Pin|LOAD_Pin
-                          |FLASH_CS_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, DS18B20_Pin|B_TEMP_LED_Pin|SETTING_LED_Pin|FLASH_CS_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, G_TEMP_LED_Pin|R_TEMP_LED_Pin|B_SPEED_LED_Pin|G_SPEED_LED_Pin
                           |R_SPEED_LED_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(LOAD_GPIO_Port, LOAD_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pins : DS18B20_Pin B_TEMP_LED_Pin SETTING_LED_Pin LOAD_Pin
                            FLASH_CS_Pin */

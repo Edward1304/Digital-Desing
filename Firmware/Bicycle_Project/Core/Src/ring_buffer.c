@@ -51,7 +51,7 @@ uint8_t ring_buffer_is_full(ring_buffer_t *rb)
 /*
  * @brief Esta funcion revisa si el buffer esta vacio
  *
- * @retval 0 si esta vacio, 1 si no esta vacio
+ * @retval 1 si esta vacio, 0 si no esta vacio
  */
 uint8_t ring_buffer_is_empty(ring_buffer_t *rb)
 {
