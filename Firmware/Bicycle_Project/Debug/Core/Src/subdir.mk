@@ -6,7 +6,9 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Core/Src/DS18B20.c \
+../Core/Src/Flash.c \
 ../Core/Src/RGB_LED.c \
+../Core/Src/Temperature_functions.c \
 ../Core/Src/main.c \
 ../Core/Src/ring_buffer.c \
 ../Core/Src/stm32f0xx_hal_msp.c \
@@ -17,7 +19,9 @@ C_SRCS += \
 
 OBJS += \
 ./Core/Src/DS18B20.o \
+./Core/Src/Flash.o \
 ./Core/Src/RGB_LED.o \
+./Core/Src/Temperature_functions.o \
 ./Core/Src/main.o \
 ./Core/Src/ring_buffer.o \
 ./Core/Src/stm32f0xx_hal_msp.o \
@@ -28,7 +32,9 @@ OBJS += \
 
 C_DEPS += \
 ./Core/Src/DS18B20.d \
+./Core/Src/Flash.d \
 ./Core/Src/RGB_LED.d \
+./Core/Src/Temperature_functions.d \
 ./Core/Src/main.d \
 ./Core/Src/ring_buffer.d \
 ./Core/Src/stm32f0xx_hal_msp.d \
@@ -45,7 +51,7 @@ Core/Src/%.o Core/Src/%.su Core/Src/%.cyclo: ../Core/Src/%.c Core/Src/subdir.mk
 clean: clean-Core-2f-Src
 
 clean-Core-2f-Src:
-	-$(RM) ./Core/Src/DS18B20.cyclo ./Core/Src/DS18B20.d ./Core/Src/DS18B20.o ./Core/Src/DS18B20.su ./Core/Src/RGB_LED.cyclo ./Core/Src/RGB_LED.d ./Core/Src/RGB_LED.o ./Core/Src/RGB_LED.su ./Core/Src/main.cyclo ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/ring_buffer.cyclo ./Core/Src/ring_buffer.d ./Core/Src/ring_buffer.o ./Core/Src/ring_buffer.su ./Core/Src/stm32f0xx_hal_msp.cyclo ./Core/Src/stm32f0xx_hal_msp.d ./Core/Src/stm32f0xx_hal_msp.o ./Core/Src/stm32f0xx_hal_msp.su ./Core/Src/stm32f0xx_it.cyclo ./Core/Src/stm32f0xx_it.d ./Core/Src/stm32f0xx_it.o ./Core/Src/stm32f0xx_it.su ./Core/Src/syscalls.cyclo ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.cyclo ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32f0xx.cyclo ./Core/Src/system_stm32f0xx.d ./Core/Src/system_stm32f0xx.o ./Core/Src/system_stm32f0xx.su
+	-$(RM) ./Core/Src/DS18B20.cyclo ./Core/Src/DS18B20.d ./Core/Src/DS18B20.o ./Core/Src/DS18B20.su ./Core/Src/Flash.cyclo ./Core/Src/Flash.d ./Core/Src/Flash.o ./Core/Src/Flash.su ./Core/Src/RGB_LED.cyclo ./Core/Src/RGB_LED.d ./Core/Src/RGB_LED.o ./Core/Src/RGB_LED.su ./Core/Src/Temperature_functions.cyclo ./Core/Src/Temperature_functions.d ./Core/Src/Temperature_functions.o ./Core/Src/Temperature_functions.su ./Core/Src/main.cyclo ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/ring_buffer.cyclo ./Core/Src/ring_buffer.d ./Core/Src/ring_buffer.o ./Core/Src/ring_buffer.su ./Core/Src/stm32f0xx_hal_msp.cyclo ./Core/Src/stm32f0xx_hal_msp.d ./Core/Src/stm32f0xx_hal_msp.o ./Core/Src/stm32f0xx_hal_msp.su ./Core/Src/stm32f0xx_it.cyclo ./Core/Src/stm32f0xx_it.d ./Core/Src/stm32f0xx_it.o ./Core/Src/stm32f0xx_it.su ./Core/Src/syscalls.cyclo ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.cyclo ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32f0xx.cyclo ./Core/Src/system_stm32f0xx.d ./Core/Src/system_stm32f0xx.o ./Core/Src/system_stm32f0xx.su
 
 .PHONY: clean-Core-2f-Src
 

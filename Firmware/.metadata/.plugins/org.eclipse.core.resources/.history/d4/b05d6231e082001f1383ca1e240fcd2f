@@ -1,0 +1,161 @@
+/* USER CODE BEGIN Header */
+/**
+  ******************************************************************************
+  * @file           : main.h
+  * @brief          : Header for main.c file.
+  *                   This file contains the common defines of the application.
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2024 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  */
+/* USER CODE END Header */
+
+/* Define to prevent recursive inclusion -------------------------------------*/
+#ifndef __MAIN_H
+#define __MAIN_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/* Includes ------------------------------------------------------------------*/
+#include "stm32f0xx_hal.h"
+
+/* Private includes ----------------------------------------------------------*/
+/* USER CODE BEGIN Includes */
+#include <stdio.h>
+#include "string.h"
+#include <math.h>
+#include "DS18B20.h"
+#include "RGB_LED.h"
+#include "ring_buffer.h"
+#include "Flash.h"
+/* USER CODE END Includes */
+
+/* Exported types ------------------------------------------------------------*/
+/* USER CODE BEGIN ET */
+
+/* USER CODE END ET */
+
+/* Exported constants --------------------------------------------------------*/
+/* USER CODE BEGIN EC */
+typedef enum{
+	False,
+	True
+}boolean_enum;
+/* USER CODE END EC */
+
+/* Exported macro ------------------------------------------------------------*/
+/* USER CODE BEGIN EM */
+
+/* USER CODE END EM */
+
+/* Exported functions prototypes ---------------------------------------------*/
+void Error_Handler(void);
+
+/* USER CODE BEGIN EFP */
+
+/* USER CODE END EFP */
+
+/* Private defines -----------------------------------------------------------*/
+#define DS18B20_Pin GPIO_PIN_2
+#define DS18B20_GPIO_Port GPIOA
+#define SPEED_SENSOR_ANALOG_Pin GPIO_PIN_3
+#define SPEED_SENSOR_ANALOG_GPIO_Port GPIOA
+#define SPEED_SENSOR_DIGITAL_Pin GPIO_PIN_4
+#define SPEED_SENSOR_DIGITAL_GPIO_Port GPIOA
+#define SPEED_SENSOR_DIGITAL_EXTI_IRQn EXTI4_15_IRQn
+#define B_TEMP_LED_Pin GPIO_PIN_7
+#define B_TEMP_LED_GPIO_Port GPIOA
+#define G_TEMP_LED_Pin GPIO_PIN_0
+#define G_TEMP_LED_GPIO_Port GPIOB
+#define R_TEMP_LED_Pin GPIO_PIN_1
+#define R_TEMP_LED_GPIO_Port GPIOB
+#define B_SPEED_LED_Pin GPIO_PIN_2
+#define B_SPEED_LED_GPIO_Port GPIOB
+#define G_SPEED_LED_Pin GPIO_PIN_10
+#define G_SPEED_LED_GPIO_Port GPIOB
+#define R_SPEED_LED_Pin GPIO_PIN_11
+#define R_SPEED_LED_GPIO_Port GPIOB
+#define DOWN_BUTTON_Pin GPIO_PIN_12
+#define DOWN_BUTTON_GPIO_Port GPIOB
+#define DOWN_BUTTON_EXTI_IRQn EXTI4_15_IRQn
+#define MODE_BUTTON_Pin GPIO_PIN_13
+#define MODE_BUTTON_GPIO_Port GPIOB
+#define MODE_BUTTON_EXTI_IRQn EXTI4_15_IRQn
+#define UP_BUTTON_Pin GPIO_PIN_14
+#define UP_BUTTON_GPIO_Port GPIOB
+#define UP_BUTTON_EXTI_IRQn EXTI4_15_IRQn
+#define SETTING_LED_Pin GPIO_PIN_8
+#define SETTING_LED_GPIO_Port GPIOA
+#define LOAD_Pin GPIO_PIN_12
+#define LOAD_GPIO_Port GPIOA
+#define FLASH_CS_Pin GPIO_PIN_15
+#define FLASH_CS_GPIO_Port GPIOA
+#define FLASH_SCK_Pin GPIO_PIN_3
+#define FLASH_SCK_GPIO_Port GPIOB
+#define FLASH_MISO_Pin GPIO_PIN_4
+#define FLASH_MISO_GPIO_Port GPIOB
+#define FLASH_MOSI_Pin GPIO_PIN_5
+#define FLASH_MOSI_GPIO_Port GPIOB
+#define UART_TX_Pin GPIO_PIN_6
+#define UART_TX_GPIO_Port GPIOB
+#define UART_RX_Pin GPIO_PIN_7
+#define UART_RX_GPIO_Port GPIOB
+
+/* USER CODE BEGIN Private defines */
+#define ID_MAX_RPM						"MAX_RPM"
+#define TIME_MEASURE_RPM				1000
+#define QUANTITY_HOLES 					20
+#define WAIT_TIME_TO_SPEED_PRINT		5000
+#define MAX_MEASURES_OF_SPEED_FOR_MEAN	36	//cada 5 segundos, entonces equivale a 3 minutos
+#define TIME_SPEED_STILL				5000
+#define MAX_SPEED_RPM_DEFAULT			100
+
+#define MAX_TIME_WAIT_TO_TRANSMIT	100
+#define WAIT_TEMPERATURE_PRINT		10000	//Time in mili-seconds
+#define	CAPACITY_USART1				16
+#define CAPACITY_BUFFER_USART1_RX	64
+#define CAPACITY_TRANSMIT_TEXT		128
+#define CAPACITY_KEY				16
+#define CAPACITY_VALUE				8
+
+#define MIN_TEMPERATURE_MEASURE_DS18B20_SENSOR 	-50
+#define MAX_TEMPERATURE_MEASURE_DS18B20_SENSOR 	120
+#define MAX_MEASURES_OF_TEMPERATURE_FOR_MEAN	6
+#define ID_TEMP_MIN_RED_LED 					"TEMP_MIN_R"
+#define ID_TEMP_MAX_RED_LED 					"TEMP_MAX_R"
+#define ID_TEMP_MIN_GREEN_LED 					"TEMP_MIN_G"
+#define ID_TEMP_MAX_GREEN_LED 					"TEMP_MAX_G"
+#define ID_TEMP_MIN_BLUE_LED 					"TEMP_MIN_B"
+#define ID_TEMP_MAX_BLUE_LED 					"TEMP_MAX_B"
+
+#define DEBOUNCE_TIME	200
+
+#define BLOCK_FOR_ALL			0x00
+#define	ADDRESS_FOR_ALL			0x00
+#define DIR_TEMPERATURE_MIN_RED	0x00
+#define DIR_TEMPERATURE_MIN_RED	0x01
+#define DIR_TEMPERATURE_MIN_RED	0x02
+#define DIR_TEMPERATURE_MIN_RED	0x03
+#define DIR_TEMPERATURE_MIN_RED	0x04
+#define DIR_TEMPERATURE_MIN_RED	0x05
+#define DIR_MEAN_TEMPERATURE	0x06
+#define DIR_RPM_MAX				0x07
+#define DIR_mean_SPEED			0X08
+
+/* USER CODE END Private defines */
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __MAIN_H */

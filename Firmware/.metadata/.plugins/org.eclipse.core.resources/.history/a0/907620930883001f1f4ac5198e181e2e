@@ -1,0 +1,56 @@
+/*
+ * Temperature_functions.c
+ *
+ *  Created on: Oct 5, 2024
+ *      Author: PISSO
+ */
+
+
+#include "Temperature_functions.h"
+
+void print_temperature(void)
+{
+	temperature = DS18B20_Get_temperature();
+	size_to_send = sprintf((char *)&transmit_text, "Temperature = %0.2f °C \r\n", temperature);
+	HAL_UART_Transmit(&huart1, (const uint8_t *)&transmit_text, size_to_send, 500);
+
+	values_for_mean_temperature[temperature_mean_counter-1] = temperature;
+
+	temperature_printing_control = HAL_GetTick();
+}
+
+void update_temperature_indicator(void)
+{
+	if((temperature >= min_blue_temperature) && (temperature <= max_blue_temperature)){
+		RGB_BLUE_ON(TEMPERATURE);
+	}else if((temperature > min_green_temperature) && (temperature <= max_green_temperature)){
+		RGB_GREEN_ON(TEMPERATURE);
+	}else if((temperature > min_red_temperature) && (temperature <= max_red_temperature)){
+		RGB_RED_ON(TEMPERATURE);
+	}else{
+		RGB_ALL_OFF(TEMPERATURE);
+	}
+}
+
+void calculate_mean_temperature(void)
+{
+	float temporal_temperature_mean = 0;
+
+	for(int i=0; i<MAX_MEASURES_OF_TEMPERATURE_FOR_MEAN; i++)
+	{
+	 temporal_temperature_mean += values_for_mean_temperature[i];
+	}
+	temperature_mean = temporal_temperature_mean/MAX_MEASURES_OF_TEMPERATURE_FOR_MEAN;
+
+	size_to_send = sprintf((char *)&transmit_text, "-----Mean temperature= %0.2f-----\r\n", temperature_mean);
+	HAL_UART_Transmit(&huart1, (const uint8_t *)&transmit_text, size_to_send, MAX_TIME_WAIT_TO_TRANSMIT);
+
+	uint8_t buffer_to_send_mean[255];
+	Flash_page_erase(BLOCK_FOR_ALL, DIR_MEAN_TEMPERATURE, ADDRESS_FOR_ALL);
+	sprintf((char *)&buffer_to_send_mean,"%0.2f", temperature_mean);
+	Flash_write_page(BLOCK_FOR_ALL, DIR_MEAN_TEMPERATURE, ADDRESS_FOR_ALL, &buffer_to_send_mean[0], SIZE_TO_READ_AND_WRITE);
+	printf("VALUE SAVED IN FLASH!\r\n");
+
+	temperature_mean_counter = 0;
+	memset(&values_for_mean_temperature, 0, sizeof(values_for_mean_temperature));
+}

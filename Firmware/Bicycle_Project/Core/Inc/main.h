@@ -37,6 +37,8 @@ extern "C" {
 #include "DS18B20.h"
 #include "RGB_LED.h"
 #include "ring_buffer.h"
+#include "Flash.h"
+#include "Temperature_functions.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -48,7 +50,9 @@ extern "C" {
 /* USER CODE BEGIN EC */
 typedef enum{
 	False,
-	True
+	True,
+	Get,
+	None
 }boolean_enum;
 /* USER CODE END EC */
 
@@ -71,6 +75,7 @@ void Error_Handler(void);
 #define SPEED_SENSOR_ANALOG_GPIO_Port GPIOA
 #define SPEED_SENSOR_DIGITAL_Pin GPIO_PIN_4
 #define SPEED_SENSOR_DIGITAL_GPIO_Port GPIOA
+#define SPEED_SENSOR_DIGITAL_EXTI_IRQn EXTI4_15_IRQn
 #define B_TEMP_LED_Pin GPIO_PIN_7
 #define B_TEMP_LED_GPIO_Port GPIOA
 #define G_TEMP_LED_Pin GPIO_PIN_0
@@ -110,6 +115,15 @@ void Error_Handler(void);
 #define UART_RX_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
+#define ID_MAX_RPM						"MAX_RPM"
+#define ID_SPEED_GET_MEAN				"SPEED_GET_MEAN"
+#define TIME_MEASURE_RPM				1000
+#define QUANTITY_HOLES 					20
+#define WAIT_TIME_TO_SPEED_PRINT		5000
+#define MAX_MEASURES_OF_SPEED_FOR_MEAN	2//36	//cada 5 segundos, entonces equivale a 3 minutos
+#define TIME_SPEED_STILL				5000
+#define MAX_SPEED_RPM_DEFAULT			100
+
 #define MAX_TIME_WAIT_TO_TRANSMIT	100
 #define WAIT_TEMPERATURE_PRINT		10000	//Time in mili-seconds
 #define	CAPACITY_USART1				16
@@ -127,6 +141,23 @@ void Error_Handler(void);
 #define ID_TEMP_MAX_GREEN_LED 					"TEMP_MAX_G"
 #define ID_TEMP_MIN_BLUE_LED 					"TEMP_MIN_B"
 #define ID_TEMP_MAX_BLUE_LED 					"TEMP_MAX_B"
+#define ID_TEMP_GET_MEAN						"TEMP_GET_MEAN"
+
+#define DEBOUNCE_TIME	200
+
+#define SIZE_TO_READ_AND_WRITE		255
+#define BLOCK_FOR_ALL				0x00
+#define	ADDRESS_FOR_ALL				0x00
+#define DIR_TEMPERATURE_MIN_RED		0x00
+#define DIR_TEMPERATURE_MAX_RED		0x01
+#define DIR_TEMPERATURE_MIN_GREEN	0x02
+#define DIR_TEMPERATURE_MAX_GREEN	0x03
+#define DIR_TEMPERATURE_MIN_BLUE	0x04
+#define DIR_TEMPERATURE_MAX_BLUE	0x05
+#define DIR_MEAN_TEMPERATURE		0x06
+#define DIR_RPM_MAX					0x07
+#define DIR_MEAN_SPEED				0X08
+
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

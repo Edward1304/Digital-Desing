@@ -1,0 +1,30 @@
+23:43:49 **** Incremental Build of configuration Debug for project Prueba_FLASH ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F030x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:126:27: warning: passing argument 1 of 'sprintf' from incompatible pointer type [-Wincompatible-pointer-types]
+  126 |   size_to_send = sprintf( &things_to_write, "the temperature is: %d \r\n", 30 );
+      |                           ^~~~~~~~~~~~~~~~
+      |                           |
+      |                           uint8_t (*)[255] {aka unsigned char (*)[255]}
+In file included from ../Core/Src/main.c:26:
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/stdio.h:250:18: note: expected 'char * restrict' but argument is of type 'uint8_t (*)[255]' {aka 'unsigned char (*)[255]'}
+  250 | int     sprintf (char *__restrict, const char *__restrict, ...)
+      |                  ^
+../Core/Src/main.c:125:11: warning: variable 'size_to_send' set but not used [-Wunused-but-set-variable]
+  125 |   uint8_t size_to_send;
+      |           ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "Prueba_FLASH.elf" @"objects.list"   -mcpu=cortex-m0 -T"E:\GUSTAVO\UNAL\Semestre_2024-1\Diseno_Digital\DigitalDesing\Firmware\Prueba_FLASH\STM32F030C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Prueba_FLASH.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Prueba_FLASH.elf
+ 
+arm-none-eabi-size  Prueba_FLASH.elf 
+arm-none-eabi-objdump -h -S Prueba_FLASH.elf  > "Prueba_FLASH.list"
+   text	   data	    bss	    dec	    hex	filename
+  15148	     92	   2668	  17908	   45f4	Prueba_FLASH.elf
+Finished building: default.size.stdout
+ 
+Finished building: Prueba_FLASH.list
+ 
+
+23:43:50 Build Finished. 0 errors, 2 warnings. (took 977ms)
+
